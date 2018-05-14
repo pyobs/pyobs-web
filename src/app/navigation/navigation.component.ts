@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {JsonRpcService} from '../json-rpc.service';
+import {JsonRpcService} from '../shared/json-rpc.service';
 import {Subscription} from 'rxjs';
 
 interface Module {

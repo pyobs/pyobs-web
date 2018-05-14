@@ -2,5 +2,13 @@
   "/jsonrpc": {
     "target": "http://localhost:37077",
     "secure": false
+  },
+  "/preview": {
+    "target": "http://localhost:37077",
+    "secure": false
+  },
+  "/headers": {
+    "target": "http://localhost:37077",
+    "secure": false
   }
 }

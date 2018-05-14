@@ -1,0 +1,88 @@
+<form class="form-compact" role="form" #exposeForm="ngForm" *ngIf="camera_status$ | async; let status">
+    <div class="form-group">
+        <label for="inputType">Image Type:</label>
+        <select class="form-control" id="inputType" name="image_type" [(ngModel)]="settings.image_type">
+            required>
+            <option value="bias">BIAS</option>
+            <option value="dark">DARK</option>
+            <option value="object">OBJECT</option>
+            <option value="flat">FLAT</option>
+        </select>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label for="inputExpTime">ExpTime [ms]:</label>
+        <input type="number" class="form-control" id="inputExpTime" placeholder="ExpTime [ms]"
+               name="exposure_time" step="1000"
+               [ngModel]="settings.exposure_time" [disabled]="settings.imgtype=='bias'"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="inputExpCount">Count:</label>
+        <input type="number" class="form-control" id="inputExpCount" placeholder="Exposure count"
+               name="count" [ngModel]="settings.count" required>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label for="inputBinning">Binning:</label>
+        <select class="form-control" id="inputBinning" name="binning" [(ngModel)]="settings.binning" required>
+            <option value="1">1x1</option>
+            <option value="2">2x2</option>
+            <option value="3">3x3</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="inputLeft">Left:</label>
+        <input type="number" class="form-control" id="inputLeft" placeholder="Left"
+               name="left" [(ngModel)]="settings.window.left" required>
+    </div>
+    <div class="form-group">
+        <label for="inputTop">Top:</label>
+        <input type="number" class="form-control" id="inputTop" placeholder="Top"
+               name="top" [(ngModel)]="settings.window.top" required>
+    </div>
+    <div class="form-group">
+        <label for="inputWidth">Width:</label>
+        <input type="number" class="form-control" id="inputWidth" placeholder="Width"
+               name="width" [(ngModel)]="settings.window.width" required>
+    </div>
+    <div class="form-group">
+        <label for="inputHeight">Height:</label>
+        <input type="number" class="form-control" id="inputHeight" placeholder="Height"
+               name="height" [(ngModel)]="settings.window.height" required>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary form-control" (click)="set_full_frame()">Full frame</button>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <button type="button" class="btn btn-success btn-block form-control"
+                [disabled]="status.ExposuresLeft!=0 || status.Status!='idle'"
+                (click)="expose(exposeForm)">
+            Expose
+        </button>
+        <button type="button" class="btn btn-warning btn-block form-control"
+                [disabled]="(status.ExposuresLeft==0 && status.Status=='idle') || sequence_aborted"
+                (click)="abort_after_exposure()">
+            Abort after exposure
+        </button>
+        <button type="button" class="btn btn-danger btn-block form-control"
+                [disabled]="(status.ExposuresLeft==0 && status.Status=='idle') || image_aborted"
+                (click)="abort_exposure()">
+            Abort exposure<span> &amp; sequence</span>
+        </button>
+    </div>
+    <div class="form-group">
+        <small [hidden]="status.ExposuresLeft<=1">
+            <em>{{status.ExposuresLeft}} exposure(s) left</em><br/>
+        </small>
+        <small>
+            <em>Exposure time left: {{status.ExposureTimeLeft/1000. | number:'1.2-2'}} sec</em>
+        </small>
+        <!--
+        <progressbar class="progress-striped" max="100" [value]="status?.ICamera.Progress" type="success">
+            {{status?.ICamera.Progress | number:'1.1-1'}}%
+        </progressbar>
+        -->
+    </div>
+</form>

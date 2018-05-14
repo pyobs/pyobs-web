@@ -1,0 +1,88 @@
+<div class="row" *ngIf="telescope_status$ | async; let status">
+    <div class="col-md-4">
+        <h3>Status</h3>
+        <form>
+            <div class="form-group row">
+                <label for="status" class="col-sm-4 col-form-label">Status:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="status"
+                           value="{{status.Status}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="curRA" class="col-sm-4 col-form-label">RA:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="curRA"
+                           value="{{status.Position.RA}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Dec:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="curDec"
+                           value="{{status.Position.Dec}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="curAlt" class="col-sm-4 col-form-label">Alt:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="curAlt"
+                           value="--">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Az:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="curAz"
+                           value="--">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-sm-4 col-sm-8">
+                    <button type="button" class="btn btn-success btn-block" (click)="init_telescope()">Init</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-sm-4 col-sm-8">
+                    <button type="button" class="btn btn-danger btn-block" (click)="park_telescope()">Park</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <h3>Move RA/Dec</h3>
+        <form #trackForm="ngForm" (submit)="track(trackForm)">
+            <div class="form-group row">
+                <label for="moveRA" class="col-sm-4 col-form-label">RA:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="ra" id="moveRA" placeholder="RA"
+                           required [(ngModel)]="set_ra">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="moveDec" class="col-sm-4 col-form-label">Dec:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="ra" id="moveDec" placeholder="Dec"
+                           required [(ngModel)]="set_dec">
+                </div>
+            </div>
+        </form>
+
+        <h3>Simbad query</h3>
+        <form #simbadForm="ngForm" (submit)="query_simbad(simbadForm)">
+            <div class="form-group row">
+                <label for="simbadName" class="col-sm-4 col-form-label">Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="simbadName" id="simbadName" placeholder="Name"
+                           required ngModel>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <button type="submit" class="btn btn-success btn-block">Query</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

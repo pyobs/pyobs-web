@@ -1,0 +1,24 @@
+<p>
+    <a [hidden]="image?.length==0" href="download/{{image}}">
+        Download image
+    </a>
+    <strong [hidden]="image?.length>0">No image taken</strong>
+</p>
+
+<div class="row">
+    <div class="col-md-8">
+        <img *ngIf="image?.length>0" src="/preview/{{image}}" width="100%">
+    </div>
+    <div class="col-md-4" style="font-size: smaller;">
+        <table class="table table-striped table-bordered table-hover table-sm" *ngIf="fits_headers$ | async as hdr">
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            <tr *ngFor="let item of hdr">
+                <td>{{item.key}}</td>
+                <td>{{item.value}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

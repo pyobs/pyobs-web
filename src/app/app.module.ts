@@ -3,18 +3,21 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {PytelSharedModule} from './pytel-shared/pytel-shared.module';
+import {NavigationComponent} from './navigation/navigation.component';
+import {ICameraService, JsonRpcService} from './shared/json-rpc.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        NavigationComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
-        PytelSharedModule
+        HttpClientModule,
+        AppRoutingModule
     ],
-    providers: [],
+    providers: [JsonRpcService, ICameraService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

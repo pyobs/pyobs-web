@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {JsonRpcService} from '../json-rpc.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'pytel-camera',
@@ -7,12 +7,14 @@ import {JsonRpcService} from '../json-rpc.service';
     styleUrls: ['./camera.component.css']
 })
 export class CameraComponent implements OnInit {
+    public module: string;
 
-    constructor(jsonrpc: JsonRpcService) {
+    constructor(private route: ActivatedRoute) {
 
     }
 
     ngOnInit() {
+        this.module = this.route.snapshot.params['module'];
     }
 
 }
