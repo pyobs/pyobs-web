@@ -5,7 +5,8 @@ const routes: Routes = [
     {path: 'telescope', loadChildren: './telescope/telescope.module#TelescopeModule'},
     {path: 'camera', loadChildren: './camera/camera.module#CameraModule'},
     {path: 'focus', loadChildren: './focus/focus.module#FocusModule'},
-    {path: 'filter', loadChildren: './filter/filter.module#FilterModule'}
+    {path: 'filter', loadChildren: './filter/filter.module#FilterModule'},
+    {path: 'cooling', loadChildren: './cooling/cooling.module#CoolingModule'}
 ];
 
 @NgModule({

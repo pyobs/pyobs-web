@@ -19,6 +19,6 @@ export class FocusComponent implements OnInit {
 
     ngOnInit() {
         this.module = this.route.snapshot.params['module'];
-        this.focus_status$ = this.jsonrpc.getStatus('telescope', 'IFocuser');
+        this.focus_status$ = this.jsonrpc.getStatus(this.module, 'IFocuser');
     }
 }

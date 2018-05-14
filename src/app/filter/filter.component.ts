@@ -20,7 +20,7 @@ export class FilterComponent implements OnInit {
 
     ngOnInit() {
         this.module = this.route.snapshot.params['module'];
-        this.filter_status$ = this.jsonrpc.getStatus('telescope', 'IFilter');
+        this.filter_status$ = this.jsonrpc.getStatus(this.module, 'IFilter');
 
         // get list of filters
         this.filters$ = this.IFilter.list_filters(this.module);

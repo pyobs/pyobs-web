@@ -5,19 +5,26 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './navigation/navigation.component';
-import {ICameraService, IFilterService, ITelescopeService, JsonRpcService} from './shared/json-rpc.service';
+import {
+    ICameraService,
+    ICoolingService,
+    IFilterService,
+    IFocuserService,
+    ITelescopeService,
+    JsonRpcService
+} from './shared/json-rpc.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavigationComponent
+        NavigationComponent,
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule
     ],
-    providers: [JsonRpcService, ICameraService, ITelescopeService, IFilterService],
+    providers: [JsonRpcService, ICoolingService, ITelescopeService, ICameraService, ITelescopeService, IFilterService, IFocuserService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

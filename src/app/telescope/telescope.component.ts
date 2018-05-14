@@ -23,7 +23,7 @@ export class TelescopeComponent implements OnInit {
 
     ngOnInit() {
         this.module = this.route.snapshot.params['module'];
-        this.telescope_status$ = this.jsonrpc.getStatus('telescope', 'ITelescope');
+        this.telescope_status$ = this.jsonrpc.getStatus(this.module, 'ITelescope');
     }
 
     public init_telescope() {
