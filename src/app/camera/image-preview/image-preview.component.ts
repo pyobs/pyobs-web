@@ -29,8 +29,7 @@ export class ImagePreviewComponent implements OnInit {
 
     private updateFitsHeaders(status: Status) {
         if (status instanceof CameraStatus) {
-            if (status.LastImage !== this.image) {
-                console.log('new image');
+            if (status.LastImage != null && status.LastImage.length > 0 && status.LastImage !== this.image) {
                 this.image = status.LastImage;
                 this.fits_headers$ = this.http.get('/headers/' + this.image)
                     .pipe(map(json => {
