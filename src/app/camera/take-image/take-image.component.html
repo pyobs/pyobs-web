@@ -79,10 +79,8 @@
         <small>
             <em>Exposure time left: {{status.ExposureTimeLeft/1000. | number:'1.2-2'}} sec</em>
         </small>
-        <!--
-        <progressbar class="progress-striped" max="100" [value]="status?.ICamera.Progress" type="success">
-            {{status?.ICamera.Progress | number:'1.1-1'}}%
+        <progressbar class="progress-striped" max="100" [value]="status.Progress" type="success">
+            {{status.Progress | number:'1.1-1'}}%
         </progressbar>
-        -->
     </div>
 </form>

@@ -6,6 +6,7 @@ import {CameraComponent} from './camera.component';
 import {CameraRoutingModule} from './camera-routing.module';
 import {ImagePreviewComponent} from './image-preview/image-preview.component';
 import {TakeImageComponent} from './take-image/take-image.component';
+import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {TakeImageComponent} from './take-image/take-image.component';
         CommonModule,
         HttpClientModule,
         FormsModule,
-        CameraRoutingModule
+        CameraRoutingModule,
+        ProgressbarModule.forRoot()
     ],
     declarations: [CameraComponent, ImagePreviewComponent, TakeImageComponent],
     providers: [],
