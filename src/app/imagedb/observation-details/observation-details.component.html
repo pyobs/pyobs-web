@@ -1,0 +1,4 @@
+<div *ngIf="observation$ | async; let obs">
+    <h2>{{obs.Name}}</h2>
+    <p>Telescope: {{obs.Telescope}}</p>
+</div>

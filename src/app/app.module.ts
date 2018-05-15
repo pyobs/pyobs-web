@@ -9,7 +9,7 @@ import {
     ICameraService,
     ICoolingService,
     IFilterService,
-    IFocuserService,
+    IFocuserService, IImageDbService,
     ITelescopeService,
     JsonRpcService
 } from './shared/json-rpc.service';
@@ -24,7 +24,11 @@ import {
         HttpClientModule,
         AppRoutingModule
     ],
-    providers: [JsonRpcService, ICoolingService, ITelescopeService, ICameraService, ITelescopeService, IFilterService, IFocuserService],
+    providers: [
+        JsonRpcService, ICoolingService, ITelescopeService,
+        ICameraService, ITelescopeService, IFilterService,
+        IFocuserService, IImageDbService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

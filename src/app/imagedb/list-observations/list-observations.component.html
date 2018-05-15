@@ -1,0 +1,20 @@
+<table class="table thead-dark table-striped table-bordered table-hover table-sm">
+    <tr>
+        <th>Observation</th>
+        <th>Task</th>
+        <th>Object</th>
+        <th>Start</th>
+        <th>#Img</th>
+        <th>Tel</th>
+        <th>Download</th>
+    </tr>
+    <tr *ngFor="let obs of observations$ | async">
+        <td><a [routerLink]="['../../observation', obs.Name]">{{obs.Name}}</a></td>
+        <td>{{obs.Task}}</td>
+        <td>{{obs.TargetName}}</td>
+        <td>{{obs.StartTime}}</td>
+        <td>{{obs.ImageCount}}</td>
+        <td>{{obs.Telescope}}</td>
+        <td></td>
+    </tr>
+</table>

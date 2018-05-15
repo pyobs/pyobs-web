@@ -248,3 +248,19 @@ export class ICoolingService {
 
 }
 
+@Injectable()
+export class IImageDbService {
+    constructor(private jsonrpc: JsonRpcService) {
+    }
+
+    public observations_for_night(module: string, night_obs: string, include_details: boolean) {
+        return this.jsonrpc.execute(module, 'observations_for_night',
+            {'night_obs': night_obs, 'include_details': include_details});
+    }
+
+    public observation_details(module: string, observation: string) {
+        return this.jsonrpc.execute(module, 'observation_details', {'observation': observation});
+    }
+
+}
+

@@ -6,7 +6,8 @@ const routes: Routes = [
     {path: 'camera', loadChildren: './camera/camera.module#CameraModule'},
     {path: 'focus', loadChildren: './focus/focus.module#FocusModule'},
     {path: 'filter', loadChildren: './filter/filter.module#FilterModule'},
-    {path: 'cooling', loadChildren: './cooling/cooling.module#CoolingModule'}
+    {path: 'cooling', loadChildren: './cooling/cooling.module#CoolingModule'},
+    {path: 'imagedb', loadChildren: './imagedb/imagedb.module#ImageDbModule'}
 ];
 
 @NgModule({
