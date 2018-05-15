@@ -19,7 +19,7 @@ export class ObservationDetailsComponent implements OnInit {
     ngOnInit() {
         this.module = this.route.snapshot.params['module'];
         this.observation = this.route.snapshot.params['name'];
-        this.observation$ = this.IImageDb.observation_details(this.module, this.observation);
+        this.observation$ = this.IImageDb.observation_details(this.module, [this.observation]);
     }
 
 }

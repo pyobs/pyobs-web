@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IImageDbService} from '../../shared/json-rpc.service';
-import {Observable} from 'rxjs';
+import {forkJoin, Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {map, switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'pytel-list-observations',
@@ -20,8 +21,9 @@ export class ListObservationsComponent implements OnInit {
         this.module = this.route.snapshot.params['module'];
         this.night = this.route.snapshot.params['night'];
 
-        // get observations
-        this.observations$ = this.IImageDb.observations_for_night(this.module, this.night, true);
+        // get list of observations and then details for all of them
+        this.observations$ = this.IImageDb.observations_for_night(this.module, this.night)
+            .pipe(map(data => this.IImageDb.observation_details(this.module, data)));
     }
 
 }

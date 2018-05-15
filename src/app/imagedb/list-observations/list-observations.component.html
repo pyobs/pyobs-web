@@ -1,3 +1,5 @@
+<h2>Observations in night {{night}}</h2>
+
 <table class="table thead-dark table-striped table-bordered table-hover table-sm">
     <tr>
         <th>Observation</th>
@@ -8,7 +10,8 @@
         <th>Tel</th>
         <th>Download</th>
     </tr>
-    <tr *ngFor="let obs of observations$ | async">
+    <ng-container *ngIf="observations$ | async; let observations;">
+    <tr *ngFor="let obs of observations | async">
         <td><a [routerLink]="['../../observation', obs.Name]">{{obs.Name}}</a></td>
         <td>{{obs.Task}}</td>
         <td>{{obs.TargetName}}</td>
@@ -17,4 +20,5 @@
         <td>{{obs.Telescope}}</td>
         <td></td>
     </tr>
+    </ng-container>
 </table>
