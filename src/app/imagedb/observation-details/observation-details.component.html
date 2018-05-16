@@ -1,4 +1,26 @@
-<div *ngIf="observation$ | async; let obs">
-    <h2>Finished observation {{obs[0].Name}}</h2>
+<h2>Finished observation {{observation}}</h2>
+
+<div *ngIf="observation$ | async; let obs;">
     <p>Telescope: {{obs[0].Telescope}}</p>
 </div>
+
+<h2>Images</h2>
+
+<table class="table thead-dark table-striped table-bordered table-hover table-sm">
+    <tr>
+        <th>Filename</th>
+        <th>Image Type</th>
+        <th>Binning</th>
+        <th>Filter</th>
+        <th>ExpTime</th>
+    </tr>
+    <ng-container *ngIf="images$ | async; let images;">
+        <tr *ngFor="let img of images | async">
+            <td>{{img.Filename}}</td>
+            <td>{{img.ImageType}}</td>
+            <td>{{img.Binning}}</td>
+            <td>{{img.Filter}}</td>
+            <td>{{img.ExpTime}}s</td>
+        </tr>
+    </ng-container>
+</table>

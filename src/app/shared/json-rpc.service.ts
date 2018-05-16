@@ -260,4 +260,12 @@ export class IImageDbService {
     public observation_details(module: string, observations: string[]) {
         return this.jsonrpc.execute(module, 'observation_details', {'observations': observations});
     }
+
+    public images_for_observation(module: string, observation: string) {
+        return this.jsonrpc.execute(module, 'images_for_observation', {'observation': observation});
+    }
+
+    public image_details(module: string, images: string[]) {
+        return this.jsonrpc.execute(module, 'image_details', {'images': images});
+    }
 }

@@ -11,14 +11,14 @@
         <th>Download</th>
     </tr>
     <ng-container *ngIf="observations$ | async; let observations;">
-    <tr *ngFor="let obs of observations | async">
-        <td><a [routerLink]="['../../observation', obs.Name]">{{obs.Name}}</a></td>
-        <td>{{obs.Task}}</td>
-        <td>{{obs.TargetName}}</td>
-        <td>{{obs.StartTime}}</td>
-        <td>{{obs.ImageCount}}</td>
-        <td>{{obs.Telescope}}</td>
-        <td></td>
-    </tr>
+        <tr *ngFor="let obs of observations | async">
+            <td><a [routerLink]="['../../observation', obs.Name]">{{obs.Name}}</a></td>
+            <td>{{obs.Task}}</td>
+            <td>{{obs.TargetName}}</td>
+            <td>{{obs.StartTime}}</td>
+            <td>{{obs.ImageCount}}</td>
+            <td>{{obs.Telescope}}</td>
+            <td></td>
+        </tr>
     </ng-container>
 </table>
