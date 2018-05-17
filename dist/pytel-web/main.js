@@ -10,27 +10,32 @@
 var map = {
 	"./camera/camera.module": [
 		"./src/app/camera/camera.module.ts",
-		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~telescope-telesc~83b5d0f9",
+		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~imagedb-imagedb-~d613c84a",
 		"camera-camera-module"
 	],
 	"./cooling/cooling.module": [
 		"./src/app/cooling/cooling.module.ts",
-		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~telescope-telesc~83b5d0f9",
+		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~imagedb-imagedb-~d613c84a",
 		"cooling-cooling-module"
 	],
 	"./filter/filter.module": [
 		"./src/app/filter/filter.module.ts",
-		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~telescope-telesc~83b5d0f9",
+		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~imagedb-imagedb-~d613c84a",
 		"filter-filter-module"
 	],
 	"./focus/focus.module": [
 		"./src/app/focus/focus.module.ts",
-		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~telescope-telesc~83b5d0f9",
+		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~imagedb-imagedb-~d613c84a",
 		"focus-focus-module"
+	],
+	"./imagedb/imagedb.module": [
+		"./src/app/imagedb/imagedb.module.ts",
+		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~imagedb-imagedb-~d613c84a",
+		"imagedb-imagedb-module"
 	],
 	"./telescope/telescope.module": [
 		"./src/app/telescope/telescope.module.ts",
-		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~telescope-telesc~83b5d0f9",
+		"camera-camera-module~cooling-cooling-module~filter-filter-module~focus-focus-module~imagedb-imagedb-~d613c84a",
 		"telescope-telescope-module"
 	]
 };
@@ -81,7 +86,8 @@ var routes = [
     { path: 'camera', loadChildren: './camera/camera.module#CameraModule' },
     { path: 'focus', loadChildren: './focus/focus.module#FocusModule' },
     { path: 'filter', loadChildren: './filter/filter.module#FilterModule' },
-    { path: 'cooling', loadChildren: './cooling/cooling.module#CoolingModule' }
+    { path: 'cooling', loadChildren: './cooling/cooling.module#CoolingModule' },
+    { path: 'imagedb', loadChildren: './imagedb/imagedb.module#ImageDbModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -194,14 +200,18 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_5__["NavigationComponent"],
+                _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_5__["NavigationComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"]
             ],
-            providers: [_shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["JsonRpcService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ICoolingService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ITelescopeService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ICameraService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ITelescopeService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["IFilterService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["IFocuserService"]],
+            providers: [
+                _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["JsonRpcService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ICoolingService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ITelescopeService"],
+                _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ICameraService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["ITelescopeService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["IFilterService"],
+                _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["IFocuserService"], _shared_json_rpc_service__WEBPACK_IMPORTED_MODULE_6__["IImageDbService"]
+            ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
@@ -230,7 +240,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">pytel</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\"\n            data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n            aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n        <ul class=\"navbar-nav mr-auto\">\n            <ng-container *ngFor=\"let module of modules\">\n                <li *ngFor=\"let link of module.links\" routerLinkActive=\"active\" class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"link.link\">{{link.label}}</a>\n                </li>\n            </ng-container>\n        </ul>\n    </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">pytel</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\"\n            data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n            aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n        <ul class=\"navbar-nav mr-auto\">\n            <ng-container *ngFor=\"let module of modules\">\n                <li *ngFor=\"let link of module.links\" routerLinkActive=\"active\" class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"link.link\">{{link.label}}</a>\n                </li>\n            </ng-container>\n            <li routerLinkActive=\"active\" class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/imagedb/imagedb/night/2018-03-25']\">ImageDB</a>\n            </li>\n        </ul>\n    </div>\n</nav>\n"
 
 /***/ }),
 
@@ -328,7 +338,7 @@ var NavigationComponent = /** @class */ (function () {
 /*!********************************************!*\
   !*** ./src/app/shared/json-rpc.service.ts ***!
   \********************************************/
-/*! exports provided: JsonRpcService, ITelescopeService, ICameraService, IImageArchiveService, IFocuserService, IFocusModelService, IFilterService, IAutoFocusService, ICoolingService */
+/*! exports provided: JsonRpcService, ITelescopeService, ICameraService, IImageArchiveService, IFocuserService, IFocusModelService, IFilterService, IAutoFocusService, ICoolingService, IImageDbService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -342,6 +352,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IFilterService", function() { return IFilterService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IAutoFocusService", function() { return IAutoFocusService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ICoolingService", function() { return ICoolingService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IImageDbService", function() { return IImageDbService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
@@ -616,6 +627,29 @@ var ICoolingService = /** @class */ (function () {
     return ICoolingService;
 }());
 
+var IImageDbService = /** @class */ (function () {
+    function IImageDbService(jsonrpc) {
+        this.jsonrpc = jsonrpc;
+    }
+    IImageDbService.prototype.observations_for_night = function (module, night_obs, include_details) {
+        return this.jsonrpc.execute(module, 'observations_for_night', { 'night_obs': night_obs, 'include_details': include_details });
+    };
+    IImageDbService.prototype.observation_details = function (module, observation) {
+        return this.jsonrpc.execute(module, 'observation_details', { 'observation': observation });
+    };
+    IImageDbService.prototype.images_for_observation = function (module, observation, reduction_status, include_details) {
+        return this.jsonrpc.execute(module, 'images_for_observation', { 'observation': observation, 'reduction_status': reduction_status, 'include_details': include_details });
+    };
+    IImageDbService.prototype.image_details = function (module, images) {
+        return this.jsonrpc.execute(module, 'image_details', { 'images': images });
+    };
+    IImageDbService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [JsonRpcService])
+    ], IImageDbService);
+    return IImageDbService;
+}());
+
 
 
 /***/ }),
@@ -794,7 +828,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /astro/code/pytel/pytel-web/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /users/husser/code/pytel/pytel-web/src/main.ts */"./src/main.ts");
 
 
 /***/ })

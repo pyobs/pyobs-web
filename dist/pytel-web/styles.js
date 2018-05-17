@@ -48,7 +48,7 @@ module.exports = "/*!\n * Bootstrap v4.1.1 (https://getbootstrap.com/)\n * Copyr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n\n.form-compact {\n    font-size: 0.8em;\n}\n\n.form-compact .form-control {\n    padding: 1px 2px;\n    height: 24px !important;\n    font-size:1em;\n}\n\n.form-compact label {\n    margin-bottom: 1px;\n}\n\n.form-compact .form-group\n{\n    margin-bottom:0px;\n}\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n\n.form-compact {\n    font-size: 0.8em;\n}\n\n.form-compact .form-control {\n    padding: 1px 2px;\n    height: 24px !important;\n    font-size:1em;\n}\n\n.form-compact label {\n    margin-bottom: 1px;\n}\n\n.form-compact .form-group\n{\n    margin-bottom:0px;\n}\n\n.loader {\n    border: 8px solid #f3f3f3; /* Light grey */\n    border-top: 8px solid #3498db; /* Blue */\n    border-radius: 50%;\n    width: 32px;\n    height: 32px;\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n    margin: 0 auto;\n}\n\n@-webkit-keyframes spin {\n    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\n    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\n}\n\n@keyframes spin {\n    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\n    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\n}\n"
 
 /***/ }),
 
@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /astro/code/pytel/pytel-web/src/styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! /astro/code/pytel/pytel-web/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! /users/husser/code/pytel/pytel-web/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /users/husser/code/pytel/pytel-web/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
 /***/ })

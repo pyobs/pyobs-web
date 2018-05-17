@@ -10,15 +10,13 @@
         <th>Tel</th>
         <th>Download</th>
     </tr>
-    <ng-container *ngIf="observations$ | async; let observations;">
-        <tr *ngFor="let obs of observations | async">
-            <td><a [routerLink]="['../../observation', obs.Name]">{{obs.Name}}</a></td>
-            <td>{{obs.Task}}</td>
-            <td>{{obs.TargetName}}</td>
-            <td>{{obs.StartTime}}</td>
-            <td>{{obs.ImageCount}}</td>
-            <td>{{obs.Telescope}}</td>
-            <td></td>
-        </tr>
-    </ng-container>
+    <tr *ngFor="let obs of observations$ | async">
+        <td><a [routerLink]="['../../observation', obs.name]">{{obs.name}}</a></td>
+        <td>{{obs.task_name}}</td>
+        <td>{{obs.target_name}}</td>
+        <td>{{obs.start_time}}</td>
+        <td>{{obs.image_count}}</td>
+        <td>{{obs.telescope}}</td>
+        <td></td>
+    </tr>
 </table>

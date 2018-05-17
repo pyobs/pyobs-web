@@ -5473,7 +5473,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /astro/code/pytel/pytel-web/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /users/husser/code/pytel/pytel-web/src/polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })
