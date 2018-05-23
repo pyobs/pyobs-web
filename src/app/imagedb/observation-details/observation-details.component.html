@@ -34,8 +34,18 @@
         <td>{{img.binning}}</td>
         <td>{{img.filter}}</td>
         <td>{{img.exp_time}}s</td>
-        <td></td>
-        <td><a class="btn btn-primary btn-sm" [href]="'/download/' + img.filename">download</a></td>
+        <td>
+            <a href="#">
+                <i class="fa fa-file-image-o" aria-hidden="true"> </i>
+                preview
+            </a>
+        </td>
+        <td>
+            <a [href]="'/download/' + img.filename">
+                <i class="fa fa-download" aria-hidden="true"> </i>
+                download
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
