@@ -6,6 +6,7 @@ import {ImageDbRoutingModule} from './imagedb-routing.module';
 import {ListObservationsComponent} from './list-observations/list-observations.component';
 import {ObservationDetailsComponent} from './observation-details/observation-details.component';
 import {BasenamePipe} from '../shared/basename.pipe';
+import { ListImagesComponent } from './list-images/list-images.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {BasenamePipe} from '../shared/basename.pipe';
         FormsModule,
         ImageDbRoutingModule
     ],
-    declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe],
+    declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe, ListImagesComponent],
     providers: [],
     exports: [ListObservationsComponent]
 })

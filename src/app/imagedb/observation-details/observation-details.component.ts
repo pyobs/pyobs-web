@@ -12,7 +12,8 @@ export class ObservationDetailsComponent implements OnInit {
     public module: string;
     public observation: string;
     public observation$: Observable<any>;
-    public images$: Observable<any>;
+    public raw_images$: Observable<any>;
+    public reduced_images$: Observable<any>;
 
     constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
     }
@@ -23,7 +24,8 @@ export class ObservationDetailsComponent implements OnInit {
         this.observation$ = this.IImageDb.observation_details(this.module, this.observation);
 
         // get list of images and then details for all of them
-        this.images$ = this.IImageDb.images_for_observation(this.module, this.observation, 0, true);
+        this.raw_images$ = this.IImageDb.images_for_observation(this.module, this.observation, 0, true);
+        this.reduced_images$ = this.IImageDb.images_for_observation(this.module, this.observation, 1, true);
     }
 
 }

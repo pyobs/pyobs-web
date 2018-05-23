@@ -5,47 +5,7 @@
 </div>
 
 <h2>Raw Images</h2>
+<pytel-list-images [images$]="raw_images$"></pytel-list-images>
 
-<table class="table thead-dark table-striped table-bordered table-hover table-sm">
-    <tr>
-        <th>#</th>
-        <th>Filename</th>
-        <th>Date Obs</th>
-        <th>Image Type</th>
-        <th>Target</th>
-        <th>Binning</th>
-        <th>Filter</th>
-        <th>ExpTime</th>
-        <th>Download</th>
-    </tr>
-    <ng-template #loading>
-        <tr>
-            <td colspan="9">
-                <div class="loader"></div>
-            </td>
-        </tr>
-    </ng-template>
-    <tbody *ngIf="images$ | async as images; else loading">
-    <tr *ngFor="let img of images; index as i;">
-        <td>{{i+1}}</td>
-        <td>
-            <a href="#">
-                <i class="fa fa-file-image-o" aria-hidden="true"> </i>
-                {{img.filename | basename}}
-            </a>
-        </td>
-        <td>{{img.date_obs}}</td>
-        <td>{{img.image_type}}</td>
-        <td>{{img.target_name}}</td>
-        <td>{{img.binning}}</td>
-        <td>{{img.filter}}</td>
-        <td>{{img.exp_time}}s</td>
-        <td>
-            <a [href]="'/download/' + img.filename">
-                <i class="fa fa-download" aria-hidden="true"> </i>
-                download
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<h2>Reduced Images</h2>
+<pytel-list-images [images$]="reduced_images$"></pytel-list-images>
