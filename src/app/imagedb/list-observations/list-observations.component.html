@@ -10,7 +10,15 @@
         <th>Tel</th>
         <th>Download</th>
     </tr>
-    <tr *ngFor="let obs of observations$ | async">
+    <ng-template #loading>
+        <tr>
+            <td colspan="7">
+                <div class="loader"></div>
+            </td>
+        </tr>
+    </ng-template>
+    <tbody *ngIf="observations$ | async as observations; else loading">
+    <tr *ngFor="let obs of observations">
         <td><a [routerLink]="['../../observation', obs.name]">{{obs.name}}</a></td>
         <td>{{obs.task_name}}</td>
         <td>{{obs.target_names.join(', ')}}</td>
@@ -19,4 +27,5 @@
         <td>{{obs.telescopes.join(', ')}}</td>
         <td></td>
     </tr>
+    </tbody>
 </table>
