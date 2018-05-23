@@ -14,6 +14,8 @@ export class ObservationDetailsComponent implements OnInit {
     public observation$: Observable<any>;
     public raw_images$: Observable<any>;
     public reduced_images$: Observable<any>;
+    public collapseRaw = true;
+    public collapseReduced = true;
 
     constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
     }
