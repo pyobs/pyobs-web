@@ -14,7 +14,7 @@ export class ImagePreviewComponent implements OnInit {
     public camera_status$: Observable<Status>;
     @Input() module: string;
     private subscription: Subscription;
-    private image: string;
+    private image: string = null;
     private fits_headers$: Observable<any>;
 
     constructor(private jsonrpc: JsonRpcService, private http: HttpClient) {
@@ -29,7 +29,7 @@ export class ImagePreviewComponent implements OnInit {
 
     private updateFitsHeaders(status: Status) {
         if (status instanceof CameraStatus) {
-            if (status.LastImage != null && status.LastImage.length > 0 && status.LastImage !== this.image) {
+            if (status.LastImage !== this.image) {
                 this.image = status.LastImage;
                 this.fits_headers$ = this.http.get('/headers/' + this.image)
                     .pipe(map(json => {

@@ -828,7 +828,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /users/husser/code/pytel/pytel-web/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /astro/code/pytel/pytel-web/src/main.ts */"./src/main.ts");
 
 
 /***/ })

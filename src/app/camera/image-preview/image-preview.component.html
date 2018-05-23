@@ -1,8 +1,8 @@
 <p>
-    <a [hidden]="image?.length==0" href="download/{{image}}">
+    <a [hidden]="image===null" href="download/{{image}}">
         Download image
     </a>
-    <strong [hidden]="image?.length>0">No image taken</strong>
+    <strong [hidden]="image!==null">No image taken</strong>
 </p>
 
 <div class="row">

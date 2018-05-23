@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /users/husser/code/pytel/pytel-web/src/styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! /users/husser/code/pytel/pytel-web/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! /astro/code/pytel/pytel-web/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /astro/code/pytel/pytel-web/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
 /***/ })
