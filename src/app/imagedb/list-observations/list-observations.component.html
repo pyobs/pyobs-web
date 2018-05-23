@@ -4,7 +4,7 @@
     <tr>
         <th>Observation</th>
         <th>Task</th>
-        <th>Object</th>
+        <th>Targets</th>
         <th>Start</th>
         <th>#Img</th>
         <th>Tel</th>
@@ -13,10 +13,10 @@
     <tr *ngFor="let obs of observations$ | async">
         <td><a [routerLink]="['../../observation', obs.name]">{{obs.name}}</a></td>
         <td>{{obs.task_name}}</td>
-        <td>{{obs.target_name}}</td>
+        <td>{{obs.target_names.join(', ')}}</td>
         <td>{{obs.start_time}}</td>
         <td>{{obs.image_count}}</td>
-        <td>{{obs.telescope}}</td>
+        <td>{{obs.telescopes.join(', ')}}</td>
         <td></td>
     </tr>
 </table>

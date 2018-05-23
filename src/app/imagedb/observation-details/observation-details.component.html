@@ -1,10 +1,10 @@
 <h2>Finished observation {{observation}}</h2>
 
 <div *ngIf="observation$ | async; let obs;">
-    <p>Telescope: {{obs.telescope}}</p>
+    <p>Telescopes: {{obs.telescopes.join(', ')}}</p>
 </div>
 
-<h2>Images</h2>
+<h2>Raw Images</h2>
 
 <table class="table thead-dark table-striped table-bordered table-hover table-sm">
     <tr>
