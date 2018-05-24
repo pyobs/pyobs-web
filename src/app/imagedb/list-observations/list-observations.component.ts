@@ -18,6 +18,7 @@ export class ListObservationsComponent implements OnInit {
     }
 
     ngOnInit() {
+        // get module and night
         this.module = this.route.snapshot.params['module'];
         this.night = this.route.snapshot.params['night'];
 

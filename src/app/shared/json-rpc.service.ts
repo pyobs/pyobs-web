@@ -267,7 +267,11 @@ export class IImageDbService {
             {'observation': observation, 'reduction_status': reduction_status, 'include_details': include_details});
     }
 
-    public image_details(module: string, images: string[]) {
-        return this.jsonrpc.execute(module, 'image_details', {'images': images});
+    public image_details(module: string, image: string) {
+        return this.jsonrpc.execute(module, 'image_details', {'image': image});
+    }
+
+    public get_image_headers(module: string, filename: string) {
+        return this.jsonrpc.execute(module, 'get_image_headers', {'filename': filename});
     }
 }

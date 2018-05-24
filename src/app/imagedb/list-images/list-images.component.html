@@ -21,7 +21,7 @@
     <tr *ngFor="let img of images; index as i;">
         <td>{{i+1}}</td>
         <td>
-            <a href="#">
+            <a [routerLink]="['../../image', img.filename]">
                 <i class="fa fa-file-image-o" aria-hidden="true"> </i>
                 {{img.filename | basename}}
             </a>
@@ -33,7 +33,7 @@
         <td>{{img.filter}}</td>
         <td>{{img.exp_time}}s</td>
         <td>
-            <a [href]="'/download/' + img.filename">
+            <a [href]="'/download/' + img.scheme + ':' + img.filename">
                 <i class="fa fa-download" aria-hidden="true"> </i>
                 download
             </a>

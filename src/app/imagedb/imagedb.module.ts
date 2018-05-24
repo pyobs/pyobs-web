@@ -8,6 +8,7 @@ import {ObservationDetailsComponent} from './observation-details/observation-det
 import {BasenamePipe} from '../shared/basename.pipe';
 import {ListImagesComponent} from './list-images/list-images.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
+import { ImageDetailsComponent } from './image-details/image-details.component';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
         ImageDbRoutingModule,
         CollapseModule.forRoot()
     ],
-    declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe, ListImagesComponent],
+    declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe, ListImagesComponent, ImageDetailsComponent],
     providers: [],
     exports: [ListObservationsComponent]
 })
