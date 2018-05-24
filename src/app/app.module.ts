@@ -13,11 +13,13 @@ import {
     ITelescopeService,
     JsonRpcService
 } from './shared/json-rpc.service';
+import {CoordinatesPipe} from './shared/coordinates.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavigationComponent
+        NavigationComponent,
+        CoordinatesPipe
     ],
     imports: [
         BrowserModule,

@@ -14,8 +14,8 @@ export class ImagePreviewComponent implements OnInit {
     public camera_status$: Observable<Status>;
     @Input() module: string;
     private subscription: Subscription;
-    private image: string = null;
-    private fits_headers$: Observable<any>;
+    public image: string = null;
+    public fits_headers$: Observable<any>;
 
     constructor(private jsonrpc: JsonRpcService, private http: HttpClient) {
 
