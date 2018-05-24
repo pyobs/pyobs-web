@@ -4,25 +4,30 @@
     <p>Telescopes: {{obs.telescopes.join(', ')}}</p>
 </div>
 
-<h4>
+<ng-template #loading>
+    (loading)
+</ng-template>
+
+<h5>
     <i class="fa" [class.fa-plus-circle]="collapseRaw" [class.fa-minus-circle]="!collapseRaw"
        (click)="collapseRaw = !collapseRaw" [attr.aria-expanded]="!collapseRaw"
        aria-controls="collapseRaw"></i>
-    Raw files (available: )
+    Raw files
+    <span *ngIf="raw_images$ | async as images; else loading">(count: {{images.length}})</span>
     <a class="btn btn-sm btn-dark" href="#">Download all</a>
-</h4>
+</h5>
 <div id="collapseRaw" [collapse]="collapseRaw">
     <pytel-list-images [images$]="raw_images$"></pytel-list-images>
 </div>
 
-
-<h4>
+<h5>
     <i class="fa" [class.fa-plus-circle]="collapseReduced" [class.fa-minus-circle]="!collapseReduced"
        (click)="collapseReduced = !collapseReduced" [attr.aria-expanded]="!collapseReduced"
        aria-controls="collapseReduced"></i>
-    Reduced files (available: )
+    Reduced files
+    <span *ngIf="reduced_images$ | async as images; else loading">(count: {{images.length}})</span>
     <a class="btn btn-sm btn-dark" href="#">Download all</a>
-</h4>
+</h5>
 <div id="collapseBasic" [collapse]="collapseReduced">
     <pytel-list-images [images$]="reduced_images$"></pytel-list-images>
 </div>

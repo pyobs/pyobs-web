@@ -1,13 +1,13 @@
-<table class="table thead-dark table-striped table-bordered table-hover table-sm">
+<table class="table thead-dark table-striped table-bordered table-hover table-sm" style="font-size: small">
     <tr>
         <th>#</th>
         <th>Filename</th>
         <th>Date Obs</th>
-        <th>Image Type</th>
+        <th>Type</th>
         <th>Target</th>
-        <th>Binning</th>
+        <th>Bin</th>
         <th>Filter</th>
-        <th>ExpTime</th>
+        <th>Exp</th>
         <th>Download</th>
     </tr>
     <ng-template #loading>
@@ -38,6 +38,9 @@
                 download
             </a>
         </td>
+    </tr>
+    <tr *ngIf="images.length==0">
+        <td colspan="9" style="text-align: center">No images</td>
     </tr>
     </tbody>
 </table>
