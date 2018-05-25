@@ -253,13 +253,9 @@ export class IImageDbService {
     constructor(private jsonrpc: JsonRpcService) {
     }
 
-    public observations_for_night(module: string, night_obs: string, include_details: boolean) {
-        return this.jsonrpc.execute(module, 'observations_for_night',
-            {'night_obs': night_obs, 'include_details': include_details});
-    }
-
-    public observation_details(module: string, observation: string) {
-        return this.jsonrpc.execute(module, 'observation_details', {'observation': observation});
+    public find_observations(module: string, name: string, night_start: string, night_end: string, include_details: boolean) {
+        return this.jsonrpc.execute(module, 'find_observations',
+            {'name': name, 'night_start': night_start, 'night_end': night_end, 'include_details': include_details});
     }
 
     public images_for_observation(module: string, observation: string, reduction_status: number, include_details: boolean) {

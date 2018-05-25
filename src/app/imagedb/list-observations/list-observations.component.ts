@@ -23,7 +23,7 @@ export class ListObservationsComponent implements OnInit {
         this.night = this.route.snapshot.params['night'];
 
         // get list of observations and then details for all of them
-        this.observations$ = this.IImageDb.observations_for_night(this.module, this.night, true);
+        this.observations$ = this.IImageDb.find_observations(this.module, null, this.night, this.night, true);
     }
 
 }

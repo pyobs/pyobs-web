@@ -1,7 +1,7 @@
 <h2>Finished observation {{observation}}</h2>
 
 <div *ngIf="observation$ | async; let obs;">
-    <p>Telescopes: {{obs.telescopes.join(', ')}}</p>
+    <p>Telescopes: {{obs[0].telescopes.join(', ')}}</p>
 </div>
 
 <ng-template #loading>

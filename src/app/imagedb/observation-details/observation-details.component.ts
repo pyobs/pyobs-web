@@ -24,7 +24,7 @@ export class ObservationDetailsComponent implements OnInit {
     ngOnInit() {
         this.module = this.route.snapshot.params['module'];
         this.observation = this.route.snapshot.params['name'];
-        this.observation$ = this.IImageDb.observation_details(this.module, this.observation);
+        this.observation$ = this.IImageDb.find_observations(this.module, this.observation, null, null, true);
 
         // get list of images and then details for all of them
         this.raw_images$ = this.IImageDb.images_for_observation(this.module, this.observation, 0, true).pipe(share());
