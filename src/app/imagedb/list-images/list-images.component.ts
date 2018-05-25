@@ -13,15 +13,26 @@ export class ListImagesComponent implements OnInit {
     @Input() reduction_status: number;
     public count$: Observable<number>;
     public images$: Observable<any>;
+    public itemsPerPage = 50;
+    public currentPage = 1;
 
     constructor(private IImageDb: IImageDbService) {
     }
 
     ngOnInit() {
         // get image counts and images
-        const params = {observation: this.observation, reduction_status: this.reduction_status, include_details: true};
-        this.count$ = this.IImageDb.count_images(this.module, params);
-        this.images$ = this.IImageDb.find_images(this.module, params);
+        this.count$ = this.IImageDb.count_images(this.module,
+            {observation: this.observation, reduction_status: this.reduction_status, include_details: true});
+        this.pageChanged({page: this.currentPage, itemsPerPage: this.itemsPerPage});
+    }
+
+    public pageChanged($event) {
+        this.currentPage = $event.page - 1;
+        this.images$ = this.IImageDb.find_images(this.module,
+            {
+                observation: this.observation, reduction_status: this.reduction_status, include_details: true,
+                offset: this.currentPage * this.itemsPerPage, limit: this.itemsPerPage
+            });
     }
 
 }

@@ -8,7 +8,8 @@ import {ObservationDetailsComponent} from './observation-details/observation-det
 import {BasenamePipe} from '../shared/basename.pipe';
 import {ListImagesComponent} from './list-images/list-images.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
-import { ImageDetailsComponent } from './image-details/image-details.component';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {ImageDetailsComponent} from './image-details/image-details.component';
 
 
 @NgModule({
@@ -17,9 +18,11 @@ import { ImageDetailsComponent } from './image-details/image-details.component';
         HttpClientModule,
         FormsModule,
         ImageDbRoutingModule,
-        CollapseModule.forRoot()
+        CollapseModule.forRoot(),
+        PaginationModule.forRoot()
     ],
-    declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe, ListImagesComponent, ImageDetailsComponent],
+    declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe,
+        ListImagesComponent, ImageDetailsComponent],
     providers: [],
     exports: [ListObservationsComponent]
 })
