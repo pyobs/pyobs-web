@@ -25,7 +25,7 @@ export class ImageDetailsComponent implements OnInit {
         this.filename = this.route.snapshot.params['filename'];
 
         // get download scheme
-        this.scheme$ = this.IImageDb.download_scheme(this.module);
+        this.scheme$ = this.IImageDb.download_scheme(this.module).pipe(share());
 
         // get image details
         this.image$ = this.IImageDb.find_images(this.module, {filename: this.filename, include_details: true});

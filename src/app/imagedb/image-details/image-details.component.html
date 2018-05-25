@@ -15,15 +15,23 @@
             <th>Binning</th>
             <th>ExpTime</th>
             <th>Filter</th>
+            <th>Download</th>
         </tr>
         <tr>
-            <td><a [routerLink]="['../../observation', image[0].observation]">{{image[0].observation}}</a></td>
+            <td><a [routerLink]="['../../observation', image[0].observation]">
+                <i class="fa fa-folder-open"></i> {{image[0].observation}}
+            </a></td>
             <td>{{image[0].telescope}}</td>
             <td>{{image[0].image_type}}</td>
             <td>{{image[0].target_name}}</td>
             <td>{{image[0].binning}}</td>
             <td>{{image[0].exp_time}}s</td>
             <td>{{image[0].filter}}</td>
+            <td *ngIf="scheme$ | async as scheme;">
+                <a href="/download/{{image[0].scheme}}:{{image[0].filename}}">
+                    <i class="fa fa-download"></i> download
+                </a>
+            </td>
         </tr>
     </table>
 

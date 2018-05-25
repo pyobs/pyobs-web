@@ -19,7 +19,9 @@
     </ng-template>
     <tbody *ngIf="observations$ | async as observations; else loading">
     <tr *ngFor="let obs of observations">
-        <td><a [routerLink]="['../../observation', obs.name]">{{obs.name}}</a></td>
+        <td><a [routerLink]="['../../observation', obs.name]">
+            <i class="fa fa-folder-open"></i> {{obs.name}}
+        </a></td>
         <td>{{obs.task_name}}</td>
         <td>{{obs.target_names.join(', ')}}</td>
         <td>{{obs.start_time}}</td>
