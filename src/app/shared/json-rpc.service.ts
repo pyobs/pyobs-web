@@ -248,6 +248,17 @@ export class ICoolingService {
 
 }
 
+export interface FindImagesParams {
+    filename?: string;
+    observation?: string;
+    reduction_status?: number;
+    date_start?: string;
+    date_end?: string;
+    offset?: number;
+    limit?: number;
+    include_details?: boolean;
+}
+
 @Injectable()
 export class IImageDbService {
     constructor(private jsonrpc: JsonRpcService) {
@@ -258,13 +269,8 @@ export class IImageDbService {
             {'name': name, 'night_start': night_start, 'night_end': night_end, 'include_details': include_details});
     }
 
-    public images_for_observation(module: string, observation: string, reduction_status: number, include_details: boolean) {
-        return this.jsonrpc.execute(module, 'images_for_observation',
-            {'observation': observation, 'reduction_status': reduction_status, 'include_details': include_details});
-    }
-
-    public image_details(module: string, image: string) {
-        return this.jsonrpc.execute(module, 'image_details', {'image': image});
+    public find_images(module: string, params: FindImagesParams) {
+        return this.jsonrpc.execute(module, 'find_images', params);
     }
 
     public get_image_headers(module: string, filename: string) {

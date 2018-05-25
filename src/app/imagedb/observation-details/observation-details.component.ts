@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IImageDbService} from '../../shared/json-rpc.service';
+import {FindImagesParams, IImageDbService} from '../../shared/json-rpc.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {share} from 'rxjs/operators';
@@ -27,8 +27,10 @@ export class ObservationDetailsComponent implements OnInit {
         this.observation$ = this.IImageDb.find_observations(this.module, this.observation, null, null, true);
 
         // get list of images and then details for all of them
-        this.raw_images$ = this.IImageDb.images_for_observation(this.module, this.observation, 0, true).pipe(share());
-        this.reduced_images$ = this.IImageDb.images_for_observation(this.module, this.observation, 1, true).pipe(share());
+        this.raw_images$ = this.IImageDb.find_images(this.module,
+            {observation: this.observation, reduction_status: 0, include_details: true}).pipe(share());
+        this.reduced_images$ = this.IImageDb.find_images(this.module,
+            {observation: this.observation, reduction_status: 1, include_details: true}).pipe(share());
     }
 
 }

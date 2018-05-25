@@ -4,7 +4,7 @@
 
 
 <div *ngIf="image$ | async as image; else loading">
-    <h2>{{image['filename']}}</h2>
+    <h2>{{image[0]['filename']}}</h2>
 
     <table class="table table-bordered table-sm">
         <tr>
@@ -17,19 +17,19 @@
             <th>Filter</th>
         </tr>
         <tr>
-            <td><a [routerLink]="['../../observation', image.observation]">{{image.observation}}</a></td>
-            <td>{{image.telescope}}</td>
-            <td>{{image.image_type}}</td>
-            <td>{{image.target_name}}</td>
-            <td>{{image.binning}}</td>
-            <td>{{image.exp_time}}s</td>
-            <td>{{image.filter}}</td>
+            <td><a [routerLink]="['../../observation', image[0].observation]">{{image[0].observation}}</a></td>
+            <td>{{image[0].telescope}}</td>
+            <td>{{image[0].image_type}}</td>
+            <td>{{image[0].target_name}}</td>
+            <td>{{image[0].binning}}</td>
+            <td>{{image[0].exp_time}}s</td>
+            <td>{{image[0].filter}}</td>
         </tr>
     </table>
 
     <div class="row">
         <div class="col-md-8">
-            <img src="/preview/{{image.scheme}}:{{image.filename}}" width="100%">
+            <img src="/preview/{{image[0].scheme}}:{{image[0].filename}}" width="100%">
         </div>
         <div class="col-md-4">
             <h5>FITS headers</h5>
