@@ -273,6 +273,10 @@ export class IImageDbService {
             {'name': name, 'night_start': night_start, 'night_end': night_end, 'include_details': include_details});
     }
 
+    public count_images(module: string, params: FindImagesParams) {
+        return this.jsonrpc.execute(module, 'count_images', params);
+    }
+
     public find_images(module: string, params: FindImagesParams) {
         return this.jsonrpc.execute(module, 'find_images', params);
     }
