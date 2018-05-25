@@ -27,7 +27,7 @@
         </tr>
     </table>
 
-    <div class="row">
+    <div class="row" *ngIf="scheme$ | async as scheme;">
         <div class="col-md-8">
             <img src="/preview/{{image[0].scheme}}:{{image[0].filename}}" width="100%">
         </div>

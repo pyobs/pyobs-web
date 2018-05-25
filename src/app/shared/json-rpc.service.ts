@@ -264,6 +264,10 @@ export class IImageDbService {
     constructor(private jsonrpc: JsonRpcService) {
     }
 
+    public download_scheme(module: string) {
+        return this.jsonrpc.execute(module, 'download_scheme', null);
+    }
+
     public find_observations(module: string, name: string, night_start: string, night_end: string, include_details: boolean) {
         return this.jsonrpc.execute(module, 'find_observations',
             {'name': name, 'night_start': night_start, 'night_end': night_end, 'include_details': include_details});
