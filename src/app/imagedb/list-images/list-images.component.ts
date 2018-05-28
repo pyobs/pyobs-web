@@ -15,7 +15,7 @@ export class ListImagesComponent implements OnInit {
     public count$: Observable<number>;
     public images$: Observable<any>;
     public images = [];
-    public currentPage = 1;
+    public currentPage = 0;
 
     constructor(private IImageDb: IImageDbService) {
     }
