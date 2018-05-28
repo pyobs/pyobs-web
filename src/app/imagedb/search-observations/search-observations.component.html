@@ -42,14 +42,15 @@
     </div>
     <div class="row">
         <div class="col-3">
-            <label for="proposal" class="col-form-label-sm">Proposal:</label>
+            <label for="project" class="col-form-label-sm">Project:</label>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <fa-icon [icon]="faFolderOpen"></fa-icon>
                     </div>
                 </div>
-                <input id="proposal" name="proposal" class="form-control" type="text" placeholder="Proposal" ngModel>
+                <input id="project" name="project" class="form-control" type="text" placeholder="Project"
+                       disabled ngModel>
             </div>
         </div>
         <div class="col-3">
@@ -83,7 +84,7 @@
                         <fa-icon [icon]="faUser"></fa-icon>
                     </div>
                 </div>
-                <input id="user" name="user" class="form-control" type="text" placeholder="User" ngModel>
+                <input id="user" name="user" class="form-control" type="text" placeholder="User" disabled ngModel>
             </div>
         </div>
     </div>

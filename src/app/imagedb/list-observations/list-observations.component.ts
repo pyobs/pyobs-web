@@ -29,19 +29,14 @@ export class ListObservationsComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        // prepare params
-        const params = this.query;
-        params['include_details'] = true;
-
-        // get image count
-        this.count$ = this.IImageDb.count_observations(this.module, params);
-
         // initial update
+        this.updateCount();
         this.updateList();
     }
 
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
         if (changes['query'] && this.query) {
+            this.updateCount();
             this.updateList();
         }
     }
@@ -52,6 +47,15 @@ export class ListObservationsComponent implements OnInit, OnChanges {
 
         // update list
         this.updateList();
+    }
+
+    updateCount() {
+        // prepare params
+        const params = this.query;
+        params['include_details'] = true;
+
+        // get image count
+        this.count$ = this.IImageDb.count_observations(this.module, params);
     }
 
     updateList() {

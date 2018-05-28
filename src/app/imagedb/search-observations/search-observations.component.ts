@@ -60,6 +60,9 @@ export class SearchObservationsComponent implements OnInit {
             query['night_start'] = pipe.transform(form.value.nights[0], 'yyyy-MM-dd');
             query['night_end'] = pipe.transform(form.value.nights[1], 'yyyy-MM-dd');
         }
+        if (form.value.task.length > 0) {
+            query['task'] = form.value.task;
+        }
 
         // set it
         this.query = query;
