@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QueryDataComponent } from './query-data.component';
+import { SearchImagesComponent } from './search-images.component';
 
-describe('QueryDataComponent', () => {
-  let component: QueryDataComponent;
-  let fixture: ComponentFixture<QueryDataComponent>;
+describe('SearchImagesComponent', () => {
+  let component: SearchImagesComponent;
+  let fixture: ComponentFixture<SearchImagesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QueryDataComponent ]
+      declarations: [ SearchImagesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QueryDataComponent);
+    fixture = TestBed.createComponent(SearchImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

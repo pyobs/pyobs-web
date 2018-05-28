@@ -1,0 +1,198 @@
+<h2>Search images</h2>
+<form #searchForm="ngForm" (submit)="search(searchForm)">
+    <div class="row">
+        <div class="col-4">
+            <label for="telescope" class="col-form-label-sm">Telescope:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faGlobe"></fa-icon>
+                    </div>
+                </div>
+                <select id="telescope" name="telescope" class="form-control" ngModel>
+                    <option *ngFor="let tel of telescopes$ | async" [value]="tel">{{tel}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="instrument" class="col-form-label-sm">Instrument:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faCamera"></fa-icon>
+                    </div>
+                </div>
+                <select id="instrument" name="instrument" class="form-control" ngModel>
+                    <option *ngFor="let inst of instruments$ | async" [value]="inst">{{inst}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="nights" class="col-form-label-sm">Nights:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faMoon"></fa-icon>
+                    </div>
+                </div>
+                <input id="nights" name="nights" class="form-control" type="text" placeholder="Nights"
+                       bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" ngModel>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="project" class="col-form-label-sm">Project:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faFolderOpen"></fa-icon>
+                    </div>
+                </div>
+                <input id="project" name="project" class="form-control" type="text" placeholder="Project"
+                       disabled ngModel>
+            </div>
+        </div>
+        <div class="col-3">
+            <label for="task" class="col-form-label-sm">Task:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faTasks"></fa-icon>
+                    </div>
+                </div>
+                <input id="task" name="task" class="form-control" type="text" placeholder="Task" ngModel>
+            </div>
+        </div>
+        <div class="col-3">
+            <label for="observation" class="col-form-label-sm">Observation:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faImages"></fa-icon>
+                    </div>
+                </div>
+                <input id="observation" name="observation" class="form-control" type="text" placeholder="Observation"
+                       ngModel>
+            </div>
+        </div>
+        <div class="col-3">
+            <label for="user" class="col-form-label-sm">User:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="user" name="user" class="form-control" type="text" placeholder="User" disabled ngModel>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="btn-group" btnRadioGroup [(ngModel)]="imageType" name="imageType">
+            <label class="btn btn-outline-primary" btnRadio="light" tabindex="0" role="button">light</label>
+            <label class="btn btn-outline-primary" btnRadio="bias" tabindex="0" role="button">bias</label>
+            <label class="btn btn-outline-primary" btnRadio="dark" tabindex="0" role="button">dark</label>
+            <label class="btn btn-outline-primary" btnRadio="flat" tabindex="0" role="button">flat</label>
+        </div>
+
+        &nbsp;
+
+        <div class="btn-group" btnRadioGroup [(ngModel)]="reductionStatus" name="reductionStatus">
+            <label class="btn btn-outline-success" btnRadio="raw" tabindex="0" role="button">raw</label>
+            <label class="btn btn-outline-success" btnRadio="reduced" tabindex="0" role="button">reduced</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <label for="binning" class="col-form-label-sm">Binning:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <select id="binning" name="binning" class="form-control" ngModel>
+                </select>
+            </div>
+
+            <label for="filter" class="col-form-label-sm">Filter:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <select id="filter" name="filter" class="form-control" ngModel>
+                </select>
+            </div>
+
+            <label for="exp_time" class="col-form-label-sm">Exposure time:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="exp_time" name="exp_time" class="form-control" type="number" placeholder="Exp. time"
+                       ngModel>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <label for="target" class="col-form-label-sm">Target:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="target" name="target" class="form-control" type="number" placeholder="Target"
+                       ngModel>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <label for="ra" class="col-form-label-sm">Target:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="ra" name="ra" class="form-control" type="text" placeholder="RA" ngModel>
+            </div>
+
+            <label for="dec" class="col-form-label-sm">Dec:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="dec" name="dec" class="form-control" type="text" placeholder="Dec" ngModel>
+            </div>
+
+            <label for="radius" class="col-form-label-sm">Radius:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="radius" name="radius" class="form-control" type="text" placeholder="Radius" ngModel>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center">
+        <button id="submit" class="btn btn-default btn">Search observations</button>
+    </div>
+
+</form>
+
+<pytel-list-images [module]="module" *ngIf="query!==null">
+</pytel-list-images>
