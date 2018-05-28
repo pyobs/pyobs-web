@@ -12,6 +12,7 @@ import {faImages} from '@fortawesome/free-solid-svg-icons';
 export class ListObservationsComponent implements OnInit {
     // inputs
     @Input() module: string;
+    @Input() query = {};
     @Input() night_start: string;
     @Input() night_end: string;
     @Input() itemsPerPage = 50;
@@ -28,12 +29,12 @@ export class ListObservationsComponent implements OnInit {
     }
 
     ngOnInit() {
+        // prepare params
+        const params = this.query;
+        params['include_details'] = true;
+
         // get image count
-        this.count$ = this.IImageDb.count_observations(this.module, {
-            night_start: this.night_start,
-            night_end: this.night_end,
-            include_details: true
-        });
+        this.count$ = this.IImageDb.count_observations(this.module, params);
 
         // initial update
         this.updateList();
@@ -51,14 +52,14 @@ export class ListObservationsComponent implements OnInit {
         // reset list of observations, so that the list can show a load animation
         this.observations = null;
 
+        // prepare params
+        const params = this.query;
+        params['include_details'] = true;
+        params['offset'] = this.currentPage * this.itemsPerPage;
+        params['limit'] = this.itemsPerPage;
+
         // load new list of observations
-        this.IImageDb.find_observations(this.module, {
-            night_start: this.night_start,
-            night_end: this.night_end,
-            include_details: true,
-            offset: this.currentPage * this.itemsPerPage,
-            limit: this.itemsPerPage
-        }).subscribe(data => this.observations = data);
+        this.IImageDb.find_observations(this.module, params).subscribe(data => this.observations = data);
     }
 
 }
