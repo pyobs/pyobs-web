@@ -10,7 +10,7 @@ import {ListImagesComponent} from './list-images/list-images.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {ImageDetailsComponent} from './image-details/image-details.component';
-import {SearchImagesComponent} from './search-images/search-images.component';
+import {QueryDataComponent} from './query-data/query-data.component';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
@@ -25,7 +25,7 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
         BsDatepickerModule.forRoot()
     ],
     declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe,
-        ListImagesComponent, ImageDetailsComponent, SearchImagesComponent],
+        ListImagesComponent, ImageDetailsComponent, QueryDataComponent],
     providers: [],
     exports: [ListObservationsComponent]
 })
