@@ -4,7 +4,10 @@
 
 
 <div *ngIf="image$ | async as image; else loading">
-    <h2>{{image[0]['filename']}}</h2>
+    <h2>
+        Image
+        <fa-icon [icon]="faImage"></fa-icon> {{image[0]['filename'] | basename}}
+    </h2>
 
     <table class="table table-bordered table-sm">
         <tr>
@@ -19,7 +22,7 @@
         </tr>
         <tr>
             <td><a [routerLink]="['../../observation', image[0].observation]">
-                <i class="fa fa-folder-open"></i> {{image[0].observation}}
+                <fa-icon [icon]="faImages"></fa-icon> {{image[0].observation}}
             </a></td>
             <td>{{image[0].telescope}}</td>
             <td>{{image[0].image_type}}</td>
@@ -29,7 +32,7 @@
             <td>{{image[0].filter}}</td>
             <td *ngIf="scheme$ | async as scheme;">
                 <a href="/download/{{image[0].scheme}}:{{image[0].filename}}">
-                    <i class="fa fa-download"></i> download
+                    <fa-icon [icon]="faDownload"></fa-icon> download
                 </a>
             </td>
         </tr>

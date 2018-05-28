@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {Observable} from 'rxjs/index';
 import {map, share} from 'rxjs/operators';
+import {faImage, faDownload, faImages} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'pytel-image-details',
@@ -10,6 +11,12 @@ import {map, share} from 'rxjs/operators';
     styleUrls: ['./image-details.component.css']
 })
 export class ImageDetailsComponent implements OnInit {
+    // font awesome icons
+    faImage = faImage;
+    faDownload = faDownload;
+    faImages = faImages;
+
+    // variables
     public module: string;
     public filename: string;
     public image$: Observable<any>;

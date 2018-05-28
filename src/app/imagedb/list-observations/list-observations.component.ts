@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {forkJoin, Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {map, switchMap} from 'rxjs/operators';
+import {faImages} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'pytel-list-observations',
@@ -10,15 +10,19 @@ import {map, switchMap} from 'rxjs/operators';
     styleUrls: ['./list-observations.component.css']
 })
 export class ListObservationsComponent implements OnInit {
+    // inputs
     @Input() module: string;
     @Input() night_start: string;
     @Input() night_end: string;
     @Input() itemsPerPage = 50;
 
-    public count$: Observable<number>;
-    public observations$: Observable<any>;
-    public observations = [];
-    public currentPage = 0;
+    // font awesome icons
+    faImages = faImages;
+
+    count$: Observable<number>;
+    observations$: Observable<any>;
+    observations = [];
+    currentPage = 0;
 
     constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
     }
@@ -35,7 +39,7 @@ export class ListObservationsComponent implements OnInit {
         this.updateList();
     }
 
-    public pageChanged($event) {
+    pageChanged($event) {
         // set current page
         this.currentPage = $event.page - 1;
 
@@ -43,7 +47,7 @@ export class ListObservationsComponent implements OnInit {
         this.updateList();
     }
 
-    public updateList() {
+    updateList() {
         // reset list of observations, so that the list can show a load animation
         this.observations = null;
 

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FindImagesParams, IImageDbService} from '../../shared/json-rpc.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {share} from 'rxjs/operators';
+import {faImages} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'pytel-observation-details',
@@ -10,6 +10,10 @@ import {share} from 'rxjs/operators';
     styleUrls: ['./observation-details.component.css']
 })
 export class ObservationDetailsComponent implements OnInit {
+    // font awesome icons
+    faImages = faImages;
+
+    // variables
     public module: string;
     public observation: string;
     public observation$: Observable<any>;

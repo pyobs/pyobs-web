@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IImageDbService} from '../../shared/json-rpc.service';
+import {faImage, faDownload} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'pytel-list-images',
@@ -8,10 +9,17 @@ import {IImageDbService} from '../../shared/json-rpc.service';
     styleUrls: ['./list-images.component.css']
 })
 export class ListImagesComponent implements OnInit {
+    // inputs
     @Input() module: string;
     @Input() observation: string;
     @Input() reduction_status: number;
     @Input() itemsPerPage = 50;
+
+    // font awesome icons
+    faImage = faImage;
+    faDownload = faDownload;
+
+    // variables
     public count$: Observable<number>;
     public images$: Observable<any>;
     public images = [];

@@ -1,4 +1,4 @@
-<h2>Finished observation {{observation}}</h2>
+<h2>Finished observation <fa-icon [icon]="faImages"></fa-icon>{{observation}}</h2>
 
 <div *ngIf="observation$ | async; let obs;">
     <p>Telescopes: {{obs[0].telescopes.join(', ')}}</p>
