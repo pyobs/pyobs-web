@@ -10,6 +10,8 @@ import {ListImagesComponent} from './list-images/list-images.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {ImageDetailsComponent} from './image-details/image-details.component';
+import {SearchImagesComponent} from './search-images/search-images.component';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -19,10 +21,11 @@ import {ImageDetailsComponent} from './image-details/image-details.component';
         FormsModule,
         ImageDbRoutingModule,
         CollapseModule.forRoot(),
-        PaginationModule.forRoot()
+        PaginationModule.forRoot(),
+        BsDatepickerModule.forRoot()
     ],
     declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe,
-        ListImagesComponent, ImageDetailsComponent],
+        ListImagesComponent, ImageDetailsComponent, SearchImagesComponent],
     providers: [],
     exports: [ListObservationsComponent]
 })

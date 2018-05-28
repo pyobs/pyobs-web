@@ -1,0 +1,97 @@
+<h2>Search images</h2>
+<form #searchForm="ngForm" (submit)="search()">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="telescope" class="col-sm-4 col-form-label">Telescope:</label>
+                <div class="col-sm-8">
+                    <select id="telescope" class="form-control">
+                        <option>MONET/S</option>
+                        <option>MONET/N</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="instrument" class="col-sm-4 col-form-label">Instrument:</label>
+                <div class="col-sm-8">
+                    <select id="instrument" class="form-control">
+                        <option>FLI</option>
+                        <option>SI</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="night_start" class="col-sm-4 col-form-label">Nights:</label>
+                <div class="col-sm-8">
+                    <input id="night_start" class="form-control" type="text" placeholder="Nights"
+                           bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="proposal" class="col-sm-4 col-form-label">Proposal:</label>
+                <div class="col-sm-8">
+                    <input id="proposal" class="form-control" type="text" placeholder="Proposal">
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="task" class="col-sm-4 col-form-label">Task:</label>
+                <div class="col-sm-8">
+                    <input id="task" class="form-control" type="text" placeholder="Task">
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="observation" class="col-sm-4 col-form-label">Observation:</label>
+                <div class="col-sm-8">
+                    <input id="observation" class="form-control" type="text" placeholder="Observation">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="user" class="col-sm-4 col-form-label">User:</label>
+                <div class="col-sm-8">
+                    <input id="user" class="form-control" type="text" placeholder="User">
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="imageType" class="col-sm-4 col-form-label">Image Type:</label>
+                <div class="col-sm-8">
+                    <select id="imageType" class="form-control">
+                        <option>light</option>
+                        <option>bias</option>
+                        <option>dark</option>
+                        <option>flat</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group row">
+                <label for="mode" class="col-sm-4 col-form-label">Mode:</label>
+                <div class="col-sm-8">
+                    <select id="mode" class="form-control">
+                        <option>raw images</option>
+                        <option>reduced images</option>
+                        <option>observations</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
