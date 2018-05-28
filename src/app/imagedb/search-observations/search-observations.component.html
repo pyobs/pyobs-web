@@ -91,3 +91,6 @@
         <button id="submit" class="btn btn-default btn">Search observations</button>
     </div>
 </form>
+
+<pytel-list-observations [module]="module" [query]="query" *ngIf="query!==null">
+</pytel-list-observations>

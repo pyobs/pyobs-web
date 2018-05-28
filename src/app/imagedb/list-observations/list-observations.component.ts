@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChange} from '@angular/core';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {forkJoin, Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
@@ -9,7 +9,7 @@ import {faImages} from '@fortawesome/free-solid-svg-icons';
     templateUrl: './list-observations.component.html',
     styleUrls: ['./list-observations.component.css']
 })
-export class ListObservationsComponent implements OnInit {
+export class ListObservationsComponent implements OnInit, OnChanges {
     // inputs
     @Input() module: string;
     @Input() query = {};
@@ -38,6 +38,12 @@ export class ListObservationsComponent implements OnInit {
 
         // initial update
         this.updateList();
+    }
+
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+        if (changes['query'] && this.query) {
+            this.updateList();
+        }
     }
 
     pageChanged($event) {

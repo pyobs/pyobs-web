@@ -4,6 +4,7 @@ import {IImageDbService} from '../../shared/json-rpc.service';
 import {Observable} from 'rxjs/Rx';
 import {ActivatedRoute} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
     selector: 'pytel-search-observations',
@@ -12,7 +13,8 @@ import {NgForm} from '@angular/forms';
 })
 export class SearchObservationsComponent implements OnInit {
     // active module
-    public module: string;
+    module: string;
+    query: Map<string, any> = null;
 
     // font awesome icons
     faImages = faImages;
@@ -40,7 +42,27 @@ export class SearchObservationsComponent implements OnInit {
     }
 
     search(form: NgForm) {
-        console.log(form.value);
+        // create new query map
+        const query = new Map<string, any>();
+
+        // check values
+        if (form.value.telescope.length > 0) {
+            query['telescope'] = form.value.telescope;
+        }
+        if (form.value.instrument.length > 0) {
+            query['instrument'] = form.value.instrument;
+        }
+        if (form.value.observation.length > 0) {
+            query['name'] = form.value.observation;
+        }
+        if (form.value.nights !== null) {
+            const pipe = new DatePipe('en-US');
+            query['night_start'] = pipe.transform(form.value.nights[0], 'yyyy-MM-dd');
+            query['night_end'] = pipe.transform(form.value.nights[1], 'yyyy-MM-dd');
+        }
+
+        // set it
+        this.query = query;
     }
 
 }
