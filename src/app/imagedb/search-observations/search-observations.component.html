@@ -1,0 +1,93 @@
+<h2>Search observations</h2>
+<form #searchForm="ngForm" (submit)="search(searchForm)">
+    <div class="row">
+        <div class="col-4">
+            <label for="telescope" class="col-form-label-sm">Telescope:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faGlobe"></fa-icon>
+                    </div>
+                </div>
+                <select id="telescope" name="telescope" class="form-control" ngModel>
+                    <option *ngFor="let tel of telescopes$ | async" [value]="tel">{{tel}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="instrument" class="col-form-label-sm">Instrument:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faCamera"></fa-icon>
+                    </div>
+                </div>
+                <select id="instrument" name="instrument" class="form-control" ngModel>
+                    <option *ngFor="let inst of instruments$ | async" [value]="inst">{{inst}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="nights" class="col-form-label-sm">Nights:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faMoon"></fa-icon>
+                    </div>
+                </div>
+                <input id="nights" name="nights" class="form-control" type="text" placeholder="Nights"
+                       bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" ngModel>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="proposal" class="col-form-label-sm">Proposal:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faFolderOpen"></fa-icon>
+                    </div>
+                </div>
+                <input id="proposal" name="proposal" class="form-control" type="text" placeholder="Proposal" ngModel>
+            </div>
+        </div>
+        <div class="col-3">
+            <label for="task" class="col-form-label-sm">Task:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faTasks"></fa-icon>
+                    </div>
+                </div>
+                <input id="task" name="task" class="form-control" type="text" placeholder="Task" ngModel>
+            </div>
+        </div>
+        <div class="col-3">
+            <label for="observation" class="col-form-label-sm">Observation:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faImages"></fa-icon>
+                    </div>
+                </div>
+                <input id="observation" name="observation" class="form-control" type="text" placeholder="Observation"
+                       ngModel>
+            </div>
+        </div>
+        <div class="col-3">
+            <label for="user" class="col-form-label-sm">User:</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                </div>
+                <input id="user" name="user" class="form-control" type="text" placeholder="User" ngModel>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button id="submit" class="btn btn-default btn">Search observations</button>
+    </div>
+</form>

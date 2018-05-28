@@ -259,6 +259,17 @@ export interface FindImagesParams {
     include_details?: boolean;
 }
 
+export interface FindObservationsParams {
+    name?: string;
+    telescope?: string;
+    instrument?: string;
+    night_start?: string;
+    night_end?: string;
+    offset?: number;
+    limit?: number;
+    include_details?: boolean;
+}
+
 @Injectable()
 export class IImageDbService {
     constructor(private jsonrpc: JsonRpcService) {
@@ -268,9 +279,12 @@ export class IImageDbService {
         return this.jsonrpc.execute(module, 'download_scheme', null);
     }
 
-    public find_observations(module: string, name: string, night_start: string, night_end: string, include_details: boolean) {
-        return this.jsonrpc.execute(module, 'find_observations',
-            {'name': name, 'night_start': night_start, 'night_end': night_end, 'include_details': include_details});
+    public count_observations(module: string, params: FindObservationsParams) {
+        return this.jsonrpc.execute(module, 'count_observations', params);
+    }
+
+    public find_observations(module: string, params: FindObservationsParams) {
+        return this.jsonrpc.execute(module, 'find_observations', params);
     }
 
     public count_images(module: string, params: FindImagesParams) {
@@ -283,5 +297,13 @@ export class IImageDbService {
 
     public get_image_headers(module: string, filename: string) {
         return this.jsonrpc.execute(module, 'get_image_headers', {'filename': filename});
+    }
+
+    public get_telescopes(module: string) {
+        return this.jsonrpc.execute(module, 'get_telescopes', null);
+    }
+
+    public get_instruments(module: string) {
+        return this.jsonrpc.execute(module, 'get_instruments', null);
     }
 }

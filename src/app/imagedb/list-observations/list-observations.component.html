@@ -1,7 +1,27 @@
-<h2>Observations in night {{night}}</h2>
+<div class="row" *ngIf="count$ | async as count">
+    <div class="col-6">
+        <pagination #pagination [totalItems]="count" [itemsPerPage]="itemsPerPage"
+                    [boundaryLinks]="true" [maxSize]="5"
+                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                    (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+    <div class="col-6">
+        <div class="float-right">
+            {{count}} item(s),
+            per page:
+            <select class="select" (change)="itemsPerPage=$event.target.value; updateList();">
+                <option [selected]="itemsPerPage==10" value="10">10</option>
+                <option [selected]="itemsPerPage==25" value="25">25</option>
+                <option [selected]="itemsPerPage==50" value="50">50</option>
+                <option [selected]="itemsPerPage==100" value="100">100</option>
+            </select>
+        </div>
+    </div>
+</div>
 
 <table class="table thead-dark table-striped table-bordered table-hover table-sm">
     <tr>
+        <th>#</th>
         <th>Observation</th>
         <th>Task</th>
         <th>Targets</th>
@@ -12,13 +32,14 @@
     </tr>
     <ng-template #loading>
         <tr>
-            <td colspan="7">
+            <td colspan="8">
                 <div class="loader"></div>
             </td>
         </tr>
     </ng-template>
-    <tbody *ngIf="observations$ | async as observations; else loading">
-    <tr *ngFor="let obs of observations">
+    <tbody *ngIf="observations !== null; else loading">
+    <tr *ngFor="let obs of observations; index as i;">
+        <td>{{i + 1 + (currentPage * itemsPerPage)}}</td>
         <td><a [routerLink]="['../../observation', obs.name]">
             <i class="fa fa-folder-open"></i> {{obs.name}}
         </a></td>

@@ -4,6 +4,8 @@ import {ListObservationsComponent} from './list-observations/list-observations.c
 import {ObservationDetailsComponent} from './observation-details/observation-details.component';
 import {ImageDetailsComponent} from './image-details/image-details.component';
 import {QueryDataComponent} from './query-data/query-data.component';
+import {SearchObservationsComponent} from './search-observations/search-observations.component';
+import {NightDetailsComponent} from './night-details/night-details.component';
 
 const routes: Routes = [
     {
@@ -12,7 +14,11 @@ const routes: Routes = [
     },
     {
         path: ':module/night/:night',
-        component: ListObservationsComponent
+        component: NightDetailsComponent
+    },
+    {
+        path: ':module/observation',
+        component: SearchObservationsComponent
     },
     {
         path: ':module/observation/:name',

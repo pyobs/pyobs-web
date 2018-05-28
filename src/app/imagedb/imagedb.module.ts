@@ -12,6 +12,9 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {ImageDetailsComponent} from './image-details/image-details.component';
 import {QueryDataComponent} from './query-data/query-data.component';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {SearchObservationsComponent} from './search-observations/search-observations.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { NightDetailsComponent } from './night-details/night-details.component';
 
 
 @NgModule({
@@ -22,10 +25,11 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
         ImageDbRoutingModule,
         CollapseModule.forRoot(),
         PaginationModule.forRoot(),
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        FontAwesomeModule
     ],
     declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe,
-        ListImagesComponent, ImageDetailsComponent, QueryDataComponent],
+        ListImagesComponent, ImageDetailsComponent, QueryDataComponent, SearchObservationsComponent, NightDetailsComponent],
     providers: [],
     exports: [ListObservationsComponent]
 })
