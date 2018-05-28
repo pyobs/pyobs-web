@@ -7,8 +7,9 @@
     </div>
     <div class="col-6">
         <div class="float-right">
-            Items per page:
-            <select class="select" (change)="itemsPerPage=$event.target.value">
+            {{count}} items,
+            per page:
+            <select class="select" (change)="itemsPerPage=$event.target.value; updateList();">
                 <option [selected]="itemsPerPage==10" value="10">10</option>
                 <option [selected]="itemsPerPage==25" value="25">25</option>
                 <option [selected]="itemsPerPage==50" value="50">50</option>
@@ -37,7 +38,7 @@
             </td>
         </tr>
     </ng-template>
-    <tbody *ngIf="images$ | async as images; else loading">
+    <tbody *ngIf="images !== null; else loading">
     <tr *ngFor="let img of images; index as i;">
         <td>{{i + 1 + (currentPage * itemsPerPage)}}</td>
         <td>
@@ -59,7 +60,7 @@
             </a>
         </td>
     </tr>
-    <tr *ngIf="images.length==0">
+    <tr *ngIf="images?.length==0">
         <td colspan="9" style="text-align: center">No images</td>
     </tr>
     </tbody>

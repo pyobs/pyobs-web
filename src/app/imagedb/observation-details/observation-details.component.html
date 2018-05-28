@@ -8,22 +8,10 @@
     (loading)
 </ng-template>
 
-<h5>
-    <i class="fa" [class.fa-plus-circle]="collapseRaw" [class.fa-minus-circle]="!collapseRaw"
-       (click)="collapseRaw = !collapseRaw" [attr.aria-expanded]="!collapseRaw"
-       aria-controls="collapseRaw"></i>
-    Raw files
-</h5>
-<div id="collapseRaw" [collapse]="collapseRaw">
-    <pytel-list-images [module]="module" [observation]="observation" [reduction_status]="0"></pytel-list-images>
-</div>
+<h4>Raw files</h4>
+<pytel-list-images [module]="module" [observation]="observation" [reduction_status]="0" [itemsPerPage]="10">
+</pytel-list-images>
 
-<h5>
-    <i class="fa" [class.fa-plus-circle]="collapseReduced" [class.fa-minus-circle]="!collapseReduced"
-       (click)="collapseReduced = !collapseReduced" [attr.aria-expanded]="!collapseReduced"
-       aria-controls="collapseReduced"></i>
-    Reduced files
-</h5>
-<div id="collapseBasic" [collapse]="collapseReduced">
-    <pytel-list-images [module]="module" [observation]="observation" [reduction_status]="1"></pytel-list-images>
-</div>
+<h4>Reduced files</h4>
+<pytel-list-images [module]="module" [observation]="observation" [reduction_status]="1" [itemsPerPage]="10">
+</pytel-list-images>
