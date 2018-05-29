@@ -56,6 +56,9 @@ export class ListObservationsComponent implements OnInit, OnChanges {
 
         // get image count
         this.count$ = this.IImageDb.count_observations(this.module, params);
+
+        // reset page
+        this.currentPage = 0;
     }
 
     updateList() {

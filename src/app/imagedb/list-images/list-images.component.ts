@@ -55,6 +55,9 @@ export class ListImagesComponent implements OnInit, OnChanges {
 
         // get image count
         this.count$ = this.IImageDb.count_images(this.module, params);
+
+        // reset page
+        this.currentPage = 0;
     }
 
     updateList() {

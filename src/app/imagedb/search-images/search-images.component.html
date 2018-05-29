@@ -115,6 +115,10 @@
                     </div>
                 </div>
                 <select id="binning" name="binning" class="form-control" ngModel>
+                    <option value=""></option>
+                    <option value="1x1">1x1</option>
+                    <option value="2x2">2x2</option>
+                    <option value="3x3">3x3</option>
                 </select>
             </div>
 
@@ -127,6 +131,9 @@
                         </div>
                     </div>
                     <select id="filter" name="filter" class="form-control" ngModel>
+                        <option value=""></option>
+                        <option value="clear">clear</option>
+                        <option value="B">B</option>
                     </select>
                 </div>
             </ng-container>
@@ -154,7 +161,7 @@
                             <fa-icon [icon]="faStar"></fa-icon>
                         </div>
                     </div>
-                    <input id="target" name="target" class="form-control" type="number" placeholder="Target"
+                    <input id="target" name="target" class="form-control" type="text" placeholder="Target"
                            ngModel>
                 </div>
             </ng-container>

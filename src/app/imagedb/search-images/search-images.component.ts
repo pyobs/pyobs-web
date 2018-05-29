@@ -82,6 +82,26 @@ export class SearchImagesComponent implements OnInit {
         query['image_type'] = form.value.imageType;
         query['reduction_status'] = form.value.reductionStatus === 'reduced' ? 1 : 0;
 
+        // type dependent values
+        if (form.value.binning.length > 0) {
+            query['binning'] = form.value.binning;
+        }
+        if ((form.value.imageType === 'object' || form.value.imageType === 'flat') && form.value.filter.length > 0) {
+            query['filter'] = form.value.filter;
+        }
+        if ((form.value.imageType === 'object' || form.value.imageType === 'dark') && typeof form.value.exp_time === 'number') {
+            query['exp_time'] = form.value.exp_time;
+        }
+        if (form.value.imageType === 'object' && form.value.target.length > 0) {
+            query['target_name'] = form.value.target;
+        }
+        if (form.value.imageType === 'object' && form.value.coordinates.length > 0) {
+            query['coordinates'] = form.value.coordinates;
+        }
+        if (form.value.imageType === 'object' && form.value.radius.length > 0) {
+            query['search_radius'] = form.value.radius;
+        }
+
         // set it
         this.query = query;
     }
