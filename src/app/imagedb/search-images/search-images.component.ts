@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {faImages, faUser, faMoon, faCamera, faTasks, faFolderOpen, faGlobe} from '@fortawesome/free-solid-svg-icons';
+import {
+    faImages, faUser, faMoon, faCamera, faTasks, faFolderOpen, faGlobe, faClock, faFilter, faTh, faStar,
+    faMapMarker, faCircle
+} from '@fortawesome/free-solid-svg-icons';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
@@ -24,6 +27,12 @@ export class SearchImagesComponent implements OnInit {
     faTasks = faTasks;
     faFolderOpen = faFolderOpen;
     faGlobe = faGlobe;
+    faClock = faClock;
+    faFilter = faFilter;
+    faTh = faTh;
+    faStar = faStar;
+    faMapMarker = faMapMarker;
+    faCircle = faCircle;
 
     // list of telescopes and instruments
     telescopes$: Observable<any>;
