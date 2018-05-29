@@ -67,7 +67,7 @@ export class SearchImagesComponent implements OnInit {
             query['instrument'] = form.value.instrument;
         }
         if (form.value.observation.length > 0) {
-            query['name'] = form.value.observation;
+            query['observation'] = form.value.observation;
         }
         if (form.value.date !== null) {
             const pipe = new DatePipe('en-US');

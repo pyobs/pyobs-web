@@ -42,7 +42,7 @@
     <tr *ngFor="let img of images; index as i;">
         <td>{{i + 1 + (currentPage * itemsPerPage)}}</td>
         <td>
-            <a [routerLink]="['../../image', img.filename]">
+            <a [routerLink]="['/imagedb', module, 'image', img.filename]">
                 <fa-icon [icon]="faImage"></fa-icon>
                 {{img.filename | basename}}
             </a>
