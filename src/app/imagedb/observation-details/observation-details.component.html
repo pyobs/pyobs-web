@@ -9,9 +9,9 @@
 </ng-template>
 
 <h4>Raw files</h4>
-<pytel-list-images [module]="module" [observation]="observation" [reduction_status]="0" [itemsPerPage]="10">
+<pytel-list-images [module]="module" [query]="{observation: observation, reduction_status: 0}" [itemsPerPage]="10">
 </pytel-list-images>
 
 <h4>Reduced files</h4>
-<pytel-list-images [module]="module" [observation]="observation" [reduction_status]="1" [itemsPerPage]="10">
+<pytel-list-images [module]="module" [query]="{observation: observation, reduction_status: 1}" [itemsPerPage]="10">
 </pytel-list-images>

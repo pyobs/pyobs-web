@@ -28,14 +28,14 @@
             </div>
         </div>
         <div class="col-4">
-            <label for="nights" class="col-form-label-sm">Nights:</label>
+            <label for="date" class="col-form-label-sm">Date:</label>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <fa-icon [icon]="faMoon"></fa-icon>
+                        <fa-icon [icon]="faCalendar"></fa-icon>
                     </div>
                 </div>
-                <input id="nights" name="nights" class="form-control" type="text" placeholder="Nights"
+                <input id="date" name="date" class="form-control" type="text" placeholder="Date"
                        bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" ngModel>
             </div>
         </div>
@@ -91,7 +91,7 @@
 
     <div class="text-center">
         <div class="btn-group" btnRadioGroup [(ngModel)]="imageType" name="imageType">
-            <label class="btn btn-outline-primary" btnRadio="light" tabindex="0" role="button">light</label>
+            <label class="btn btn-outline-primary" btnRadio="object" tabindex="0" role="button">object</label>
             <label class="btn btn-outline-primary" btnRadio="bias" tabindex="0" role="button">bias</label>
             <label class="btn btn-outline-primary" btnRadio="dark" tabindex="0" role="button">dark</label>
             <label class="btn btn-outline-primary" btnRadio="flat" tabindex="0" role="button">flat</label>
@@ -118,7 +118,7 @@
                 </select>
             </div>
 
-            <ng-container *ngIf="imageType=='flat' || imageType == 'light'">
+            <ng-container *ngIf="imageType=='flat' || imageType == 'object'">
                 <label for="filter" class="col-form-label-sm">Filter:</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -131,7 +131,7 @@
                 </div>
             </ng-container>
 
-            <ng-container *ngIf="imageType=='dark' || imageType == 'light'">
+            <ng-container *ngIf="imageType=='dark' || imageType == 'object'">
                 <label for="exp_time" class="col-form-label-sm">Exposure time:</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -146,7 +146,7 @@
         </div>
 
         <div class="col-4">
-            <ng-container *ngIf="imageType == 'light'">
+            <ng-container *ngIf="imageType == 'object'">
                 <label for="target" class="col-form-label-sm">Target:</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -160,7 +160,7 @@
             </ng-container>
         </div>
 
-        <div class="col-4" *ngIf="imageType == 'light'">
+        <div class="col-4" *ngIf="imageType == 'object'">
             <label for="coordinates" class="col-form-label-sm">Coordinates:</label>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
@@ -191,5 +191,5 @@
 
 </form>
 
-<pytel-list-images [module]="module" *ngIf="query!==null">
+<pytel-list-images [module]="module" [query]="query" *ngIf="query!==null">
 </pytel-list-images>
