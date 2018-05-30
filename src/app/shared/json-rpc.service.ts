@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject, timer} from 'rxjs';
 import {map, flatMap, retry} from 'rxjs/operators';
 import {Status, StatusFactory} from './status-factory';
+import {Location} from '@angular/common';
+
 
 class JsonRpcResponse {
     public jsonrpc: string;
@@ -32,13 +34,16 @@ class PytelModule {
 @Injectable()
 export class JsonRpcService {
     private next_caller_id = 1;
-    private url = '/jsonrpc';
+    private readonly url = null;
     private modules: PytelModule[] = [];
     private status = new Map<string, Map<string, BehaviorSubject<Status>>>();
 
-    public  modules$ = new BehaviorSubject<PytelModule[]>([]);
+    public modules$ = new BehaviorSubject<PytelModule[]>([]);
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private location: Location) {
+        // set url
+        this.url = this.location.prepareExternalUrl('/jsonrpc');
+
         // create observable that watches the modules of the server
         timer(0, 50000)
             .pipe(flatMap(() => this.execute(null, '_get_modules', null)))

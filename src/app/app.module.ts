@@ -29,7 +29,7 @@ import {CoordinatesPipe} from './shared/coordinates.pipe';
     providers: [
         JsonRpcService, ICoolingService, ITelescopeService,
         ICameraService, ITelescopeService, IFilterService,
-        IFocuserService, IImageDbService
+        IFocuserService, IImageDbService,
     ],
     bootstrap: [AppComponent]
 })

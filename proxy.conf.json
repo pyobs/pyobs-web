@@ -1,17 +1,17 @@
 {
-  "/jsonrpc": {
+  "/pytel/jsonrpc": {
     "target": "http://localhost:37077",
     "secure": false
   },
-  "/preview": {
+  "/pytel/preview": {
     "target": "http://localhost:37077",
     "secure": false
   },
-  "/headers": {
+  "/pytel/headers": {
     "target": "http://localhost:37077",
     "secure": false
   },
-  "/download": {
+  "/pytel/download": {
     "target": "http://localhost:37077",
     "secure": false
   }
