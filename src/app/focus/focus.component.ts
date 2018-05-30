@@ -11,8 +11,8 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./focus.component.css']
 })
 export class FocusComponent implements OnInit {
-    public module: string;
-    public focus_status$: Observable<Status>;
+    module: string;
+    focus_status$: Observable<Status>;
 
     constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService) {
     }

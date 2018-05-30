@@ -1,7 +1,7 @@
-<div class="row" *ngIf="filter_status$ | async; let status">
+<div class="row" *ngIf="filter_status$ | async as status">
     <div class="col-md-4">
         <h3>Filter</h3>
-        <form #filterForm="ngForm" (submit)="set_filter(filter)">
+        <form #filterForm="ngForm" (submit)="set_filter(filter.value)">
             <div class="form-group row">
                 <label for="curFilter" class="col-sm-4 col-form-label">Cur filter:</label>
                 <div class="col-sm-8">
@@ -12,7 +12,7 @@
             <div class="form-group row">
                 <label for="filter" class="col-sm-4 control-label">Set filter:</label>
                 <div class="col-sm-8">
-                    <select class="form-control" id="filter" name="filter" [(ngModel)]="filter">
+                    <select class="form-control" id="filter" name="filter" #filter>
                         <option *ngFor="let f of filters$ | async" (value)="f">{{f}}</option>
                     </select>
                 </div>

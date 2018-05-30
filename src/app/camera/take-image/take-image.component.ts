@@ -11,17 +11,17 @@ import {Status} from '../../shared/status-factory';
     styleUrls: ['./take-image.component.css']
 })
 export class TakeImageComponent implements OnInit {
-    public camera_status$: Observable<Status>;
     @Input() module: string;
-    private settings = {
+    camera_status$: Observable<Status>;
+    settings = {
         image_type: 'object',
         binning: 1,
-        window: {},
+        window: {left: null, top: null, width: null, height: null},
         exposure_time: 1000,
         count: 1
     };
-    private sequence_aborted = false;
-    private image_aborted = false;
+    sequence_aborted = false;
+    image_aborted = false;
 
     constructor(private jsonrpc: JsonRpcService, private ICamera: ICameraService) {
     }

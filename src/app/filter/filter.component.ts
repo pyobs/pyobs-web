@@ -11,9 +11,9 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-    public module: string;
-    public filter_status$: Observable<Status>;
-    public filters$: Observable<any>;
+    module: string;
+    filter_status$: Observable<Status>;
+    filters$: Observable<any>;
 
     constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private IFilter: IFilterService) {
     }
