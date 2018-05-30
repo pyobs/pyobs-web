@@ -3,6 +3,7 @@ import {IImageDbService} from '../../shared/json-rpc.service';
 import {forkJoin, Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {faImages} from '@fortawesome/free-solid-svg-icons';
+import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 
 @Component({
     selector: 'pytel-list-observations',

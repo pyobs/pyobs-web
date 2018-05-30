@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {faImages, faUser, faMoon, faCamera, faTasks, faFolderOpen, faGlobe} from '@fortawesome/free-solid-svg-icons';
 import {IImageDbService} from '../../shared/json-rpc.service';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 
 @Component({
     selector: 'pytel-search-observations',

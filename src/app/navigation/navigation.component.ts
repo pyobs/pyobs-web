@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {JsonRpcService} from '../shared/json-rpc.service';
 import {Subscription} from 'rxjs';
 
-interface Module {
+export interface Module {
     'module': string;
     'name': string;
     'links': string[];

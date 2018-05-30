@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 
 @Component({
     selector: 'pytel-search-images',

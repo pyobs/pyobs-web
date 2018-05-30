@@ -4,6 +4,7 @@ import {IImageDbService} from '../../shared/json-rpc.service';
 import {Observable} from 'rxjs/index';
 import {map, share} from 'rxjs/operators';
 import {faImage, faDownload, faImages} from '@fortawesome/free-solid-svg-icons';
+import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 
 @Component({
     selector: 'pytel-image-details',

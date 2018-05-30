@@ -17,7 +17,6 @@ import { NightDetailsComponent } from './night-details/night-details.component';
 import { SearchImagesComponent } from './search-images/search-images.component';
 import {ButtonsModule} from 'ngx-bootstrap';
 
-
 @NgModule({
     imports: [
         CommonModule,

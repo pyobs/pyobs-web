@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChange} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {faImage, faDownload} from '@fortawesome/free-solid-svg-icons';
+import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 
 @Component({
     selector: 'pytel-list-images',

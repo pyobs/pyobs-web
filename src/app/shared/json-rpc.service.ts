@@ -19,7 +19,7 @@ class JsonRpcResponse {
     }
 }
 
-class PytelModule {
+export class PytelModule {
     public module: string;
     public name: string;
     public interfaces: string[];
