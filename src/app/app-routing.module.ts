@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {environment} from '../environments/environment';
 
-/*
 import {TelescopeModule} from './telescope/telescope.module';
 import {CameraModule} from './camera/camera.module';
 import {FocusModule} from './focus/focus.module';
@@ -36,8 +36,8 @@ const routes: Routes = [
     {path: 'cooling', loadChildren: exportCoolingModule},
     {path: 'imagedb', loadChildren: exportImageDbModule}
 ];
-*/
 
+/*
 const routes: Routes = [
     {path: 'telescope', loadChildren: './telescope/telescope.module#TelescopeModule'},
     {path: 'camera', loadChildren: './camera/camera.module#CameraModule'},
@@ -46,9 +46,10 @@ const routes: Routes = [
     {path: 'cooling', loadChildren: './cooling/cooling.module#CoolingModule'},
     {path: 'imagedb', loadChildren: './imagedb/imagedb.module#ImageDbModule'}
 ];
+*/
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {useHash: environment.useHash})],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
