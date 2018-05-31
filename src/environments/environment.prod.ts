@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    useHash: true
+    useHash: false,
+    basePath: '/pytel'
 };

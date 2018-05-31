@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, Subject, timer} from 'rxjs';
 import {map, flatMap, retry} from 'rxjs/operators';
 import {Status, StatusFactory} from './status-factory';
 import {Location} from '@angular/common';
+import {environment} from '../../environments/environment';
 
 
 class JsonRpcResponse {
@@ -42,7 +43,8 @@ export class JsonRpcService {
 
     constructor(private http: HttpClient, private location: Location) {
         // set url
-        this.url = this.location.prepareExternalUrl('/jsonrpc');
+        this.url = environment.basePath + '/jsonrpc';
+        console.log(this.url);
 
         // create observable that watches the modules of the server
         timer(0, 50000)
