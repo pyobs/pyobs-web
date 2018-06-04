@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
     useHash: true,
-    basePath: '/pytel'
+    basePath: '/components/com_pytel/pytel/'
 };

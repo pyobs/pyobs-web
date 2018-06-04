@@ -32,7 +32,7 @@ import {ButtonsModule} from 'ngx-bootstrap';
     declarations: [ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe,
         ListImagesComponent, ImageDetailsComponent, SearchObservationsComponent, NightDetailsComponent, SearchImagesComponent],
     providers: [],
-    exports: [ListObservationsComponent]
+    exports: [ListObservationsComponent, SearchImagesComponent]
 })
 export class ImageDbModule {
 }
