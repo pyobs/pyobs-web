@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {JsonRpcService} from '../shared/json-rpc.service';
 import {Subscription} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
 export interface Module {
     'module': string;
@@ -16,11 +17,14 @@ export interface Module {
 export class NavigationComponent implements OnInit {
     private subscription: Subscription;
     public modules: Module[];
+    show_navbar = false;
 
-    constructor(private jsonrpc: JsonRpcService) {
+    constructor(private jsonrpc: JsonRpcService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.route.queryParams.subscribe(params => this.show_navbar = params.hasOwnProperty('navbar') ? (params.navbar === '1') : true);
+
         // get list of modules from server
         this.subscription = this.jsonrpc.modules$.subscribe(data => {
             // build list of modules
