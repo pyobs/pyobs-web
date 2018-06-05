@@ -8,7 +8,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+<body id="body">
   <pytel-root></pytel-root>
 </body>
+<script type="application/javascript">
+    // get iframes in parent
+    var iframes = window.parent.document.getElementsByTagName('iframe');
+
+    // got one?
+    if (iframes.length > 0) {
+        // get it
+        var iframe = iframes.item(0);
+
+        // get body and its height
+        var body = document.getElementById('body');
+        var lastHeight = body.clientHeight;
+
+        // method for checking for changes
+        function checkForChanges()
+        {
+            // did it change?
+            if (body.clientHeight !== lastHeight)
+            {
+                // store body height
+                lastHeight = body.clientHeight;
+
+                // set height
+                iframe.height = lastHeight + 20 + "px";
+
+            }
+
+            // schedule next check
+            setTimeout(checkForChanges, 100);
+        }
+
+        // call it
+        checkForChanges();
+    }
+</script>
 </html>
