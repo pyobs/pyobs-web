@@ -34,28 +34,28 @@ export class NavigationComponent implements OnInit {
                     // get links
                     const links = [];
                     if (data[mod]['interfaces'].indexOf('ITelescope') !== -1) {
-                        links.push({label: 'Telescope', link: ['/telescope', data[mod]['module']]});
+                        links.push({label: 'Telescope', link: [data[mod]['module'], 'telescope']});
                     }
                     if (data[mod]['interfaces'].indexOf('IFocuser') !== -1) {
-                        links.push({label: 'Focus', link: ['/focus', data[mod]['module']]});
+                        links.push({label: 'Focus', link: [data[mod]['module'], 'focus']});
                     }
                     if (data[mod]['interfaces'].indexOf('IFilters') !== -1) {
-                        links.push({label: 'Filter', link: ['/filter', data[mod]['module']]});
+                        links.push({label: 'Filter', link: [data[mod]['module'], 'filter']});
                     }
                     if (data[mod]['interfaces'].indexOf('ICamera') !== -1) {
-                        links.push({label: 'Camera', link: ['/camera', data[mod]['module']]});
+                        links.push({label: 'Camera', link: [data[mod]['module'], 'camera']});
                     }
                     if (data[mod]['interfaces'].indexOf('IAutoFocus') !== -1) {
-                        links.push({label: 'AutoFocus', link: ['/autofocus', data[mod]['module']]});
+                        links.push({label: 'AutoFocus', link: [data[mod]['module'], 'autofocus']});
                     }
                     if (data[mod]['interfaces'].indexOf('ICooling') !== -1) {
-                        links.push({label: 'Cooling', link: ['/cooling', data[mod]['module']]});
+                        links.push({label: 'Cooling', link: [data[mod]['module'], 'cooling']});
                     }
                     if (data[mod]['interfaces'].indexOf('IRoof') !== -1) {
-                        links.push({label: 'Roof', link: ['/roof', data[mod]['module']]});
+                        links.push({label: 'Roof', link: [data[mod]['module'], 'roof']});
                     }
                     if (data[mod]['interfaces'].indexOf('IWeather') !== -1) {
-                        links.push({label: 'Weather', link: ['/weather', data[mod]['module']]});
+                        links.push({label: 'Weather', link: [data[mod]['module'], 'weather']});
                     }
 
                     // only add module, if we got links
