@@ -4,6 +4,7 @@ import {JsonRpcService} from '../../shared/json-rpc.service';
 import {HttpClient} from '@angular/common/http';
 import {CameraStatus, Status} from '../../shared/status-factory';
 import {map} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'pytel-image-preview',
@@ -16,6 +17,7 @@ export class ImagePreviewComponent implements OnInit {
     private subscription: Subscription;
     public image: string = null;
     public fits_headers$: Observable<any>;
+    basePath = environment.basePath;
 
     constructor(private jsonrpc: JsonRpcService, private http: HttpClient) {
 
@@ -31,7 +33,7 @@ export class ImagePreviewComponent implements OnInit {
         if (status instanceof CameraStatus) {
             if (status.LastImage !== this.image) {
                 this.image = status.LastImage;
-                this.fits_headers$ = this.http.get('/headers/' + this.image)
+                this.fits_headers$ = this.http.get(environment.basePath + '/headers/' + this.image)
                     .pipe(map(json => {
                         // convert dictionary to list of key/value/comment pairs
                         let tmp = [];
