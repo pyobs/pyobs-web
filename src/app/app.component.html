@@ -1,4 +1,4 @@
-<div class="container">
-    <pytel-navigation></pytel-navigation>
+<div [class]="container_class">
+    <pytel-navigation *ngIf="show_navbar"></pytel-navigation>
     <router-outlet></router-outlet>
 </div>

@@ -16,5 +16,6 @@
       "modules": ["telescope"]
     }
   },
-  "navbar": true
+  "navbar": true,
+  "fluid": true
 }

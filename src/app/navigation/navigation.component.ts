@@ -19,22 +19,18 @@ export interface Link {
 export class NavigationComponent implements OnInit {
     private subscription: Subscription;
     public links: Link[];
-    show_navbar = false;
 
     constructor(private jsonrpc: JsonRpcService, private route: ActivatedRoute, private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
-        // get config
-        const config = this.appConfig.getConfig();
-
-        // show navbar? default to true...
-        this.show_navbar = ('navbar' in config) ? config['navbar'] : true;
-
         // get list of modules from server
         this.subscription = this.jsonrpc.modules$.subscribe(data => {
             // build list of modules
             this.links = [];
+
+            // get config
+            const config = this.appConfig.getConfig();
 
             // get module names
             const module_names = [];
