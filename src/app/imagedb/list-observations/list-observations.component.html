@@ -40,7 +40,7 @@
     <tbody *ngIf="observations !== null; else loading">
     <tr *ngFor="let obs of observations; index as i;">
         <td>{{i + 1 + (currentPage * itemsPerPage)}}</td>
-        <td><a [routerLink]="['/imagedb', module, 'observation', obs.name]">
+        <td><a [routerLink]="['/', imagedb_path, 'observation', obs.name]">
             <fa-icon [icon]="faImages"></fa-icon> {{obs.name}}
         </a></td>
         <td>{{obs.task_name}}</td>

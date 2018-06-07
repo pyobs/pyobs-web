@@ -1,3 +1,4 @@
+<span class="float-right"><a [routerLink]="['/', imagedb_path, 'image']">Search images</a></span>
 <h2>Search observations</h2>
 <form #searchForm="ngForm" (submit)="search(searchForm)">
     <div class="row">
@@ -93,5 +94,5 @@
     </div>
 </form>
 
-<pytel-list-observations [module]="module" [query]="query" *ngIf="query!==null">
+<pytel-list-observations [module]="module" [imagedb_path]="imagedb_path" [query]="query" *ngIf="query!==null">
 </pytel-list-observations>

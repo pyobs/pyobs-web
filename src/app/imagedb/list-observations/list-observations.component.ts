@@ -13,6 +13,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 export class ListObservationsComponent implements OnInit, OnChanges {
     // inputs
     @Input() module: string;
+    @Input() imagedb_path: string;
     @Input() query = {};
     @Input() night_start: string;
     @Input() night_end: string;

@@ -1,4 +1,4 @@
-<div class="row" *ngIf="focus_status$ | async as let status">
+<div class="row" *ngIf="focus_status$ | async as status">
     <div class="col-md-4">
         <h3>Focus</h3>
         <form #focusForm="ngForm">
@@ -6,7 +6,7 @@
                 <label for="curFocus" class="col-sm-4 col-form-label">Cur focus:</label>
                 <div class="col-sm-8">
                     <input type="text" readonly class="form-control" id="curFocus"
-                           value=" mm">
+                           value="{{status.Focus}} mm">
                 </div>
             </div>
             <div class="form-group row">

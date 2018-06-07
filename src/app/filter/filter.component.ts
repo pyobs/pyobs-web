@@ -4,6 +4,7 @@ import {Status} from '../shared/status-factory';
 import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {AppConfigService} from '../app-config.service';
 
 @Component({
     selector: 'pytel-filter',
@@ -15,15 +16,26 @@ export class FilterComponent implements OnInit {
     filter_status$: Observable<Status>;
     filters$: Observable<any>;
 
-    constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private IFilter: IFilterService) {
+    constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private IFilter: IFilterService,
+                private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
-        this.module = this.route.snapshot.params['module'];
-        this.filter_status$ = this.jsonrpc.getStatus(this.module, 'IFilter');
+        // get first segment
+        const seg = this.route.snapshot.root.firstChild.url.toString();
 
-        // get list of filters
-        this.filters$ = this.IFilter.list_filters(this.module);
+        // find in config
+        if (seg in this.appConfig.getConfig().routes) {
+            const cfg = this.appConfig.getConfig().routes[seg];
+            if ('modules' in cfg) {
+                // set configuration
+                this.module = cfg['modules'][0];
+
+                // get list of filters
+                this.filters$ = this.IFilter.list_filters(this.module);
+                this.filter_status$ = this.jsonrpc.getStatus(this.module, 'IFilter');
+            }
+        }
     }
 
     public set_filter(filter: string) {

@@ -13,12 +13,18 @@ import {SearchObservationsComponent} from './imagedb/search-observations/search-
 import {ImageDetailsComponent} from './imagedb/image-details/image-details.component';
 import {TelescopeComponent} from './telescope/telescope.component';
 import {AppConfigService} from './app-config.service';
+import {ListObservationsComponent} from './imagedb/list-observations/list-observations.component';
 
 
 @NgModule({
     imports: [RouterModule.forRoot([], {useHash: environment.useHash})],
     exports: [RouterModule],
-    entryComponents: [CameraComponent, SearchImagesComponent, TelescopeComponent, ImageDetailsComponent, ObservationDetailsComponent]
+    entryComponents: [
+        CameraComponent, SearchImagesComponent, TelescopeComponent,
+        ImageDetailsComponent, ObservationDetailsComponent, ListObservationsComponent,
+        SearchObservationsComponent, CoolingComponent, FilterComponent,
+        FocusComponent
+    ]
 })
 export class AppRoutingModule {
     constructor(router: Router, appConfig: AppConfigService) {
@@ -79,6 +85,21 @@ export class AppRoutingModule {
                             route_config.push({
                                 path: route,
                                 component: TelescopeComponent
+                            });
+                        } else if (type === 'focus') {
+                            route_config.push({
+                                path: route,
+                                component: FocusComponent
+                            });
+                        } else if (type === 'filter') {
+                            route_config.push({
+                                path: route,
+                                component: FilterComponent
+                            });
+                        } else if (type === 'cooling') {
+                            route_config.push({
+                                path: route,
+                                component: CoolingComponent
                             });
                         }
                     }

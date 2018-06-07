@@ -3,6 +3,7 @@ import {ICoolingService, JsonRpcService} from '../shared/json-rpc.service';
 import {Status} from '../shared/status-factory';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {AppConfigService} from '../app-config.service';
 
 @Component({
     selector: 'pytel-cooling',
@@ -14,12 +15,25 @@ export class CoolingComponent implements OnInit {
     public cooling_status$: Observable<Status>;
     public cooling = { 'setpoint': 0., 'enabled': false };
 
-    constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private ICooling: ICoolingService) {
+    constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private ICooling: ICoolingService,
+                private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
-        this.module = this.route.snapshot.params['module'];
-        this.cooling_status$ = this.jsonrpc.getStatus(this.module, 'ICooling');
+        // get first segment
+        const seg = this.route.snapshot.root.firstChild.url.toString();
+
+        // find in config
+        if (seg in this.appConfig.getConfig().routes) {
+            const cfg = this.appConfig.getConfig().routes[seg];
+            if ('modules' in cfg) {
+                // set configuration
+                this.module = cfg['modules'][0];
+
+                // subscribe to status
+                this.cooling_status$ = this.jsonrpc.getStatus(this.module, 'ICooling');
+            }
+        }
     }
 
     public set_cooling() {
