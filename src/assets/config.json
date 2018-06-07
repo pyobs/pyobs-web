@@ -15,5 +15,6 @@
       "label": "Telescope",
       "modules": ["telescope"]
     }
-  }
+  },
+  "navbar": true
 }
