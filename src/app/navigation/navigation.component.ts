@@ -54,8 +54,6 @@ export class NavigationComponent implements OnInit {
                         let found = true;
                         for (const mod in modules) {
                             if (modules.hasOwnProperty(mod)) {
-                                console.log(modules[mod]);
-                                console.log(module_names);
                                 if (module_names.indexOf(modules[mod]) === -1) {
                                     // could not find module
                                     found = false;
