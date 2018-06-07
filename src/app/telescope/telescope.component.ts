@@ -5,6 +5,7 @@ import {Observable, Subscription} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {CoordinatesPipe} from '../shared/coordinates.pipe';
+import {AppConfigService} from '../app-config.service';
 
 @Component({
     selector: 'pytel-telescope',
@@ -18,12 +19,27 @@ export class TelescopeComponent implements OnInit {
     public set_dec: string;
     private coordinates_query$: Subscription;
 
-    constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private ITelescope: ITelescopeService) {
+    constructor(private route: ActivatedRoute, private jsonrpc: JsonRpcService, private ITelescope: ITelescopeService,
+                private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
-        this.module = this.route.snapshot.params['module'];
-        this.telescope_status$ = this.jsonrpc.getStatus(this.module, 'ITelescope');
+        this.route.url.subscribe(segments => {
+            // get first segment
+            const seg = segments[0].path;
+
+            // find in config
+            if (seg in this.appConfig.getConfig().routes) {
+                const cfg = this.appConfig.getConfig().routes[seg];
+                if ('modules' in cfg) {
+                    // set configuration
+                    this.module = cfg['modules'][0];
+
+                    // subscribe to status
+                    this.telescope_status$ = this.jsonrpc.getStatus(this.module, 'ITelescope');
+                }
+            }
+        });
     }
 
     public init_telescope() {

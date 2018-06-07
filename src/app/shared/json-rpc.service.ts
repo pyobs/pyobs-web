@@ -47,7 +47,7 @@ export class JsonRpcService {
         console.log(this.url);
 
         // create observable that watches the modules of the server
-        timer(0, 50000)
+        timer(0, 10000)
             .pipe(flatMap(() => this.execute(null, '_get_modules', null)))
             .pipe(map(rawModules => rawModules.map(m => new PytelModule(m))))
             .subscribe(modules => this.setModules(modules));

@@ -9,6 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {IconDefinition} from '@fortawesome/fontawesome-common-types';
+import {AppConfigService} from '../../app-config.service';
 
 @Component({
     selector: 'pytel-search-images',
@@ -44,16 +45,27 @@ export class SearchImagesComponent implements OnInit {
     imageType = 'object';
     reductionStatus = 'reduced';
 
-    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
+    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService, private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
-        // get current module
-        this.module = this.route.snapshot.params['module'];
+        this.route.url.subscribe(segments => {
+            // get first segment
+            const seg = segments[0].path;
 
-        // get list of telescopes and instruments
-        this.telescopes$ = this.IImageDb.get_telescopes(this.module);
-        this.instruments$ = this.IImageDb.get_instruments(this.module);
+            // find in config
+            if (seg in this.appConfig.getConfig().routes) {
+                const cfg = this.appConfig.getConfig().routes[seg];
+                if ('modules' in cfg) {
+                    // set configuration
+                    this.module = cfg['modules'][0];
+
+                    // get list of telescopes and instruments
+                    this.telescopes$ = this.IImageDb.get_telescopes(this.module);
+                    this.instruments$ = this.IImageDb.get_instruments(this.module);
+                }
+            }
+        });
     }
 
     search(form: NgForm) {

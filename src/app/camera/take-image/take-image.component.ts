@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange} from '@angular/core';
 import {ICameraService, JsonRpcService} from '../../shared/json-rpc.service';
 import {Observable, Subscription} from 'rxjs';
 import {NgForm} from '@angular/forms';
@@ -10,7 +10,7 @@ import {Status} from '../../shared/status-factory';
     templateUrl: './take-image.component.html',
     styleUrls: ['./take-image.component.css']
 })
-export class TakeImageComponent implements OnInit {
+export class TakeImageComponent implements OnChanges {
     @Input() module: string;
     camera_status$: Observable<Status>;
     settings = {
@@ -26,11 +26,15 @@ export class TakeImageComponent implements OnInit {
     constructor(private jsonrpc: JsonRpcService, private ICamera: ICameraService) {
     }
 
-    ngOnInit() {
-        this.camera_status$ = this.jsonrpc.getStatus(this.module, 'ICamera');
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+        if (changes['module'] && this.module) {
+            // subscribe to camera status
+            this.camera_status$ = this.jsonrpc.getStatus(this.module, 'ICamera');
 
-        // get full frame
-        this.set_full_frame();
+            // get full frame
+            this.set_full_frame();
+
+        }
     }
 
     public set_full_frame() {

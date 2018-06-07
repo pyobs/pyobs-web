@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -36,6 +36,13 @@ import {ObservationDetailsComponent} from './imagedb/observation-details/observa
 import {SearchObservationsComponent} from './imagedb/search-observations/search-observations.component';
 import {ImageDetailsComponent} from './imagedb/image-details/image-details.component';
 import {TelescopeComponent} from './telescope/telescope.component';
+import {AppConfigService} from './app-config.service';
+
+const appInitializerFn = (config: AppConfigService) => {
+    return () => {
+        return config.loadAppConfig();
+    };
+};
 
 @NgModule({
     declarations: [
@@ -67,6 +74,13 @@ import {TelescopeComponent} from './telescope/telescope.component';
         JsonRpcService, ICoolingService, ITelescopeService,
         ICameraService, ITelescopeService, IFilterService,
         IFocuserService, IImageDbService,
+        AppConfigService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: appInitializerFn,
+            multi: true,
+            deps: [AppConfigService]
+        }
     ],
     bootstrap: [AppComponent]
 })

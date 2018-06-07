@@ -1,0 +1,19 @@
+{
+  "routes": {
+    "camera": {
+      "type": "camera",
+      "label": "Camera",
+      "modules": ["camera"]
+    },
+    "imagedb": {
+      "type": "imagedb",
+      "label": "ImageDB",
+      "modules": ["imagedb"]
+    },
+    "telescope": {
+      "type": "telescope",
+      "label": "Telescope",
+      "modules": ["telescope"]
+    }
+  }
+}

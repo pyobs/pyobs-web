@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {JsonRpcService} from '../shared/json-rpc.service';
+import {JsonRpcService, PytelModule} from '../shared/json-rpc.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {environment} from '../../environments/environment';
+import {AppConfigService} from '../app-config.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
-export interface Module {
-    'module': string;
-    'name': string;
-    'links': string[];
+export interface Link {
+    label: string;
+    link: string;
 }
 
 @Component({
@@ -16,10 +18,10 @@ export interface Module {
 })
 export class NavigationComponent implements OnInit {
     private subscription: Subscription;
-    public modules: Module[];
+    public links: Link[];
     show_navbar = false;
 
-    constructor(private jsonrpc: JsonRpcService, private route: ActivatedRoute) {
+    constructor(private jsonrpc: JsonRpcService, private route: ActivatedRoute, private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
@@ -28,34 +30,91 @@ export class NavigationComponent implements OnInit {
         // get list of modules from server
         this.subscription = this.jsonrpc.modules$.subscribe(data => {
             // build list of modules
-            this.modules = [];
+            this.links = [];
+
+            // get module names
+            const module_names = [];
+            data.forEach(mod => {
+                module_names.push(mod.module);
+            });
+
+            // loop all configured routes
+            const config = this.appConfig.getConfig();
+            if ('routes' in config) {
+                for (const route in config.routes) {
+                    if (config.routes.hasOwnProperty(route)) {
+                        // we need a type and a list of modules
+                        if (!config.routes[route].hasOwnProperty('type') || !config.routes[route].hasOwnProperty('modules')) {
+                            continue;
+                        }
+                        const type = config.routes[route].type;
+                        const modules = config.routes[route].modules;
+
+                        // does modules exist?
+                        let found = true;
+                        for (const mod in modules) {
+                            if (modules.hasOwnProperty(mod)) {
+                                console.log(modules[mod]);
+                                console.log(module_names);
+                                if (module_names.indexOf(modules[mod]) === -1) {
+                                    // could not find module
+                                    found = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!found) {
+                            // at least one module is not online
+                            continue;
+                        }
+
+                        // get label
+                        let label = type;
+                        if ('label' in config.routes[route]) {
+                            label = config.routes[route].label;
+                        }
+
+                        // add link to menu
+                        this.links.push({label: label, link: route});
+                    }
+                }
+            }
+
+            /*
+            Object.entries(obj).forEach(
+                ([key, value]) => console.log(key, value)
+            );
+            */
+
+            /*
+
             for (const mod in data) {
                 if (data.hasOwnProperty(mod)) {
                     // get links
                     const links = [];
                     if (data[mod]['interfaces'].indexOf('ITelescope') !== -1) {
-                        links.push({label: 'Telescope', link: [data[mod]['module'], 'telescope']});
+                        links.push({label: 'Telescope', link: ['telescope', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('IFocuser') !== -1) {
-                        links.push({label: 'Focus', link: [data[mod]['module'], 'focus']});
+                        links.push({label: 'Focus', link: ['focus', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('IFilters') !== -1) {
-                        links.push({label: 'Filter', link: [data[mod]['module'], 'filter']});
+                        links.push({label: 'Filter', link: ['filter', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('ICamera') !== -1) {
-                        links.push({label: 'Camera', link: [data[mod]['module'], 'camera']});
+                        links.push({label: 'Camera', link: ['camera', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('IAutoFocus') !== -1) {
-                        links.push({label: 'AutoFocus', link: [data[mod]['module'], 'autofocus']});
+                        links.push({label: 'AutoFocus', link: ['autofocus', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('ICooling') !== -1) {
-                        links.push({label: 'Cooling', link: [data[mod]['module'], 'cooling']});
+                        links.push({label: 'Cooling', link: ['cooling', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('IRoof') !== -1) {
-                        links.push({label: 'Roof', link: [data[mod]['module'], 'roof']});
+                        links.push({label: 'Roof', link: ['roof', data[mod]['module']]});
                     }
                     if (data[mod]['interfaces'].indexOf('IWeather') !== -1) {
-                        links.push({label: 'Weather', link: [data[mod]['module'], 'weather']});
+                        links.push({label: 'Weather', link: ['weather', data[mod]['module']]});
                     }
 
                     // only add module, if we got links
@@ -69,7 +128,7 @@ export class NavigationComponent implements OnInit {
                         this.modules.push({'module': mod, 'name': name, 'links': links});
                     }
                 }
-            }
+            }*/
         });
     }
 
