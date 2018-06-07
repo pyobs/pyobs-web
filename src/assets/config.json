@@ -17,5 +17,5 @@
     }
   },
   "navbar": true,
-  "fluid": true
+  "fluid": false
 }

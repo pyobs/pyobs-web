@@ -18,7 +18,7 @@ import {AppConfigService} from './app-config.service';
 @NgModule({
     imports: [RouterModule.forRoot([], {useHash: environment.useHash})],
     exports: [RouterModule],
-    entryComponents: [CameraComponent, SearchImagesComponent, TelescopeComponent]
+    entryComponents: [CameraComponent, SearchImagesComponent, TelescopeComponent, ImageDetailsComponent, ObservationDetailsComponent]
 })
 export class AppRoutingModule {
     constructor(router: Router, appConfig: AppConfigService) {
@@ -47,7 +47,6 @@ export class AppRoutingModule {
                         } else if (type === 'imagedb') {
                             route_config.push({
                                 path: route,
-                                component: SearchImagesComponent,
                                 children: [
                                     {
                                         path: 'night/:night',
@@ -68,6 +67,11 @@ export class AppRoutingModule {
                                     {
                                         path: 'image/:filename',
                                         component: ImageDetailsComponent
+                                    },
+                                    {
+                                        path: '',
+                                        pathMatch: 'full',
+                                        redirectTo: 'image'
                                     }
                                 ]
                             });
@@ -82,6 +86,7 @@ export class AppRoutingModule {
             }
 
             // activate config
+            console.log(route_config);
             router.resetConfig(route_config);
         });
     }

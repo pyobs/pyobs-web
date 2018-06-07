@@ -19,6 +19,7 @@ import {AppConfigService} from '../../app-config.service';
 export class SearchImagesComponent implements OnInit {
     // active module
     module: string;
+    imagedb_path: string;
     query: Map<string, any> = null;
 
     // font awesome icons
@@ -49,23 +50,22 @@ export class SearchImagesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.url.subscribe(segments => {
-            // get first segment
-            const seg = segments[0].path;
+        // get first segment
+        const seg = this.route.snapshot.root.firstChild.url.toString();
+        this.imagedb_path = seg;
 
-            // find in config
-            if (seg in this.appConfig.getConfig().routes) {
-                const cfg = this.appConfig.getConfig().routes[seg];
-                if ('modules' in cfg) {
-                    // set configuration
-                    this.module = cfg['modules'][0];
+        // find in config
+        if (seg in this.appConfig.getConfig().routes) {
+            const cfg = this.appConfig.getConfig().routes[seg];
+            if ('modules' in cfg) {
+                // set configuration
+                this.module = cfg['modules'][0];
 
-                    // get list of telescopes and instruments
-                    this.telescopes$ = this.IImageDb.get_telescopes(this.module);
-                    this.instruments$ = this.IImageDb.get_instruments(this.module);
-                }
+                // get list of telescopes and instruments
+                this.telescopes$ = this.IImageDb.get_telescopes(this.module);
+                this.instruments$ = this.IImageDb.get_instruments(this.module);
             }
-        });
+        }
     }
 
     search(form: NgForm) {

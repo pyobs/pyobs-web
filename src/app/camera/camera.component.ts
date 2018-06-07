@@ -16,20 +16,16 @@ export class CameraComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.url.subscribe(segments => {
-            // get first segment
-            const seg = segments[0].path;
+        // get first segment
+        const seg = this.route.snapshot.root.firstChild.url.toString();
 
-            // find in config
-            if (seg in this.appConfig.getConfig().routes) {
-                const cfg = this.appConfig.getConfig().routes[seg];
-                if ('modules' in cfg) {
-                    // set configuration
-                    this.module = cfg['modules'][0];
-
-                }
+        // find in config
+        if (seg in this.appConfig.getConfig().routes) {
+            const cfg = this.appConfig.getConfig().routes[seg];
+            if ('modules' in cfg) {
+                // set configuration
+                this.module = cfg['modules'][0];
             }
-        });
+        }
     }
-
 }

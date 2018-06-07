@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {faImages} from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/fontawesome-common-types';
+import {share} from 'rxjs/operators';
+import {AppConfigService} from '../../app-config.service';
 
 @Component({
     selector: 'pytel-observation-details',
@@ -15,19 +17,32 @@ export class ObservationDetailsComponent implements OnInit {
     faImages = faImages;
 
     // variables
-    public module: string;
-    public observation: string;
-    public observation$: Observable<any>;
-    public collapseRaw = true;
-    public collapseReduced = true;
+    module: string;
+    imagedb_path: string;
+    observation: string;
+    observation$: Observable<any>;
+    collapseRaw = true;
+    collapseReduced = true;
 
-    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
+    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService, private appConfig: AppConfigService) {
     }
 
     ngOnInit() {
-        this.module = this.route.snapshot.params['module'];
-        this.observation = this.route.snapshot.params['name'];
-        this.observation$ = this.IImageDb.find_observations(this.module, {name: this.observation, include_details: true});
+        const seg = this.route.snapshot.root.firstChild.url.toString();
+        this.imagedb_path = seg;
+
+        // find in config
+        if (seg in this.appConfig.getConfig().routes) {
+            const cfg = this.appConfig.getConfig().routes[seg];
+            if ('modules' in cfg) {
+                // set configuration
+                this.module = cfg['modules'][0];
+
+                // get details
+                this.observation = this.route.snapshot.params['name'];
+                this.observation$ = this.IImageDb.find_observations(this.module, {name: this.observation, include_details: true});
+            }
+        }
     }
 
 }

@@ -30,17 +30,17 @@
             <td>{{image[0].binning}}</td>
             <td>{{image[0].exp_time}}s</td>
             <td>{{image[0].filter}}</td>
-            <td *ngIf="scheme$ | async as scheme;">
-                <a href="/download/{{image[0].scheme}}:{{image[0].filename}}">
+            <td>
+                <a href="{{basePath}}/download/{{scheme}}:{{image[0].filename}}">
                     <fa-icon [icon]="faDownload"></fa-icon> download
                 </a>
             </td>
         </tr>
     </table>
 
-    <div class="row" *ngIf="scheme$ | async as scheme;">
+    <div class="row">
         <div class="col-md-8">
-            <img src="/preview/{{image[0].scheme}}:{{image[0].filename}}" width="100%">
+            <img src="{{basePath}}/preview/{{scheme}}:{{image[0].filename}}" width="100%">
         </div>
         <div class="col-md-4">
             <h5>FITS headers</h5>

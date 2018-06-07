@@ -12,6 +12,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 export class ListImagesComponent implements OnInit, OnChanges {
     // inputs
     @Input() module: string;
+    @Input() imagedb_path: string;
     @Input() query = {};
     @Input() itemsPerPage = 50;
 
