@@ -30,9 +30,6 @@ export class ListImagesComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        // initial update
-        this.updateCount();
-        this.updateList();
     }
 
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
