@@ -5,6 +5,11 @@
       "label": "Camera",
       "modules": ["camera"]
     },
+    "cooling": {
+      "type": "cooling",
+      "label": "Cooling",
+      "modules": ["camera"]
+    },
     "imagedb": {
       "type": "imagedb",
       "label": "ImageDB",
@@ -13,6 +18,16 @@
     "telescope": {
       "type": "telescope",
       "label": "Telescope",
+      "modules": ["telescope"]
+    },
+    "filter": {
+      "type": "filter",
+      "label": "Filter",
+      "modules": ["telescope"]
+    },
+    "focus": {
+      "type": "focus",
+      "label": "Focus",
       "modules": ["telescope"]
     }
   },
