@@ -37,7 +37,7 @@ export class TaskObservationsComponent implements OnInit {
                 this.task = this.route.snapshot.params['name'];
 
                 // set query
-                this.query = {'task': 'stella.IAG_2014_0001-68'};
+                this.query = {'task': this.task};
             }
         }
     }
