@@ -44,7 +44,6 @@ export class JsonRpcService {
     constructor(private http: HttpClient, private location: Location) {
         // set url
         this.url = environment.basePath + '/jsonrpc';
-        console.log(this.url);
 
         // create observable that watches the modules of the server
         timer(0, 10000)

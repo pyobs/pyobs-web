@@ -29,15 +29,9 @@ export class SortableTableHeaderComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        console.log(this.columns);
     }
 
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
-        if (changes['columns'] && this.columns) {
-            // find first visible column
-            for (let i = 0; i < this.columns.length; i++) {
-            }
-        }
     }
 
     changeSort(column: string) {
@@ -50,7 +44,6 @@ export class SortableTableHeaderComponent implements OnInit, OnChanges {
         let col = null;
         for (let i = 0; i < this.columns.length; i++) {
             if (this.columns[i].column === column) {
-                console.log(this.columns[i].column + '*' + column);
                 col = this.columns[i];
             }
         }
@@ -67,7 +60,6 @@ export class SortableTableHeaderComponent implements OnInit, OnChanges {
             this.orderBy = column;
             this.orderAsc = true;
         }
-        console.log('emit');
         this.orderChange.emit({by: this.orderBy, asc: this.orderAsc});
     }
 }

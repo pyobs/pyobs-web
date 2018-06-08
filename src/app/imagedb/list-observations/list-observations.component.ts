@@ -86,8 +86,8 @@ export class ListObservationsComponent implements OnInit, OnChanges {
         params['include_details'] = true;
         params['offset'] = this.currentPage * this.itemsPerPage;
         params['limit'] = this.itemsPerPage;
-        params['orderBy'] = this.orderBy;
-        params['orderAsc'] = this.orderAsc;
+        params['order_by'] = this.orderBy;
+        params['order_asc'] = this.orderAsc;
 
         // load new list of observations
         this.IImageDb.find_observations(this.module, params).subscribe(data => this.observations = data);
