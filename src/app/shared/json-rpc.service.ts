@@ -272,6 +272,7 @@ export interface FindObservationsParams {
     instrument?: string;
     night_start?: string;
     night_end?: string;
+    task?: string;
     offset?: number;
     limit?: number;
     include_details?: boolean;

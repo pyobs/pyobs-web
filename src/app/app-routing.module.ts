@@ -14,6 +14,7 @@ import {ImageDetailsComponent} from './imagedb/image-details/image-details.compo
 import {TelescopeComponent} from './telescope/telescope.component';
 import {AppConfigService} from './app-config.service';
 import {ListObservationsComponent} from './imagedb/list-observations/list-observations.component';
+import {TaskObservationsComponent} from './taskdb/task-observations/task-observations.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {ListObservationsComponent} from './imagedb/list-observations/list-observ
         CameraComponent, SearchImagesComponent, TelescopeComponent,
         ImageDetailsComponent, ObservationDetailsComponent, ListObservationsComponent,
         SearchObservationsComponent, CoolingComponent, FilterComponent,
-        FocusComponent
+        FocusComponent, TaskObservationsComponent
     ]
 })
 export class AppRoutingModule {
@@ -78,6 +79,16 @@ export class AppRoutingModule {
                                         path: '',
                                         pathMatch: 'full',
                                         redirectTo: 'image'
+                                    }
+                                ]
+                            });
+                        } else if (type === 'taskdb') {
+                            route_config.push({
+                                path: route,
+                                children: [
+                                    {
+                                        path: 'task/:name/observations',
+                                        component: TaskObservationsComponent
                                     }
                                 ]
                             });

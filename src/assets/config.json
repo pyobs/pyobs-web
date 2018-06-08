@@ -15,6 +15,12 @@
       "label": "ImageDB",
       "modules": ["imagedb"]
     },
+    "taskdb": {
+      "type": "taskdb",
+      "label": "Tasks",
+      "modules": ["imagedb"],
+      "imagedb": "imagedb"
+    },
     "telescope": {
       "type": "telescope",
       "label": "Telescope",
