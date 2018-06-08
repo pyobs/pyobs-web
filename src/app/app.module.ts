@@ -37,7 +37,8 @@ import {SearchObservationsComponent} from './imagedb/search-observations/search-
 import {ImageDetailsComponent} from './imagedb/image-details/image-details.component';
 import {TelescopeComponent} from './telescope/telescope.component';
 import {AppConfigService} from './app-config.service';
-import { TaskObservationsComponent } from './taskdb/task-observations/task-observations.component';
+import {TaskObservationsComponent} from './taskdb/task-observations/task-observations.component';
+import {SortableTableHeaderComponent} from './helper/sortable-table-header/sortable-table-header.component';
 
 const appInitializerFn = (config: AppConfigService) => {
     return () => {
@@ -58,7 +59,8 @@ const appInitializerFn = (config: AppConfigService) => {
         ListObservationsComponent, ListObservationsComponent, ObservationDetailsComponent, BasenamePipe,
         ListImagesComponent, ImageDetailsComponent, SearchObservationsComponent, NightDetailsComponent, SearchImagesComponent,
         TelescopeComponent,
-        TaskObservationsComponent
+        TaskObservationsComponent,
+        SortableTableHeaderComponent
     ],
     imports: [
         BrowserModule,

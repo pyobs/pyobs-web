@@ -1,0 +1,8 @@
+<tr>
+    <th>#</th>
+    <th *ngFor="let col of columns" (click)="changeSort(col.column)" style="cursor: pointer;">
+        {{col.label}}
+        <span *ngIf="orderBy==col.column && orderAsc" class="float-right">&#9650;</span>
+        <span *ngIf="orderBy==col.column && !orderAsc" class="float-right">&#9660;</span>
+    </th>
+</tr>

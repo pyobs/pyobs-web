@@ -20,16 +20,12 @@
 </div>
 
 <table class="table thead-dark table-striped table-bordered table-hover table-sm">
-    <tr>
-        <th>#</th>
-        <th>Observation</th>
-        <th>Task</th>
-        <th>Targets</th>
-        <th>Start</th>
-        <th>#Img</th>
-        <th>Tel</th>
-        <th>Download</th>
-    </tr>
+
+</table>
+
+<table class="table thead-dark table-striped table-bordered table-hover table-sm">
+    <thead pytel-sortable-table-header [columns]="table_columns" [orderBy]="orderBy" [orderAsc]="orderAsc"
+           (orderChange)="orderChanged($event)"></thead>
     <ng-template #loading>
         <tr>
             <td colspan="8">

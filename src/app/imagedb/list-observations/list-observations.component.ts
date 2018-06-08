@@ -4,6 +4,7 @@ import {forkJoin, Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {faImages} from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/fontawesome-common-types';
+import {TableColumn} from '../../helper/sortable-table-header/sortable-table-header.component';
 
 @Component({
     selector: 'pytel-list-observations',
@@ -22,6 +23,13 @@ export class ListObservationsComponent implements OnInit, OnChanges {
     // font awesome icons
     faImages = faImages;
 
+    // table columns
+    table_columns: TableColumn[];
+
+    // sorting
+    orderBy = 'name';
+    orderAsc = true;
+
     count$: Observable<number>;
     observations$: Observable<any>;
     observations = [];
@@ -31,6 +39,15 @@ export class ListObservationsComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+        this.table_columns = [
+            {label: 'Observation', column: 'name', show: true},
+            {label: 'Task', column: 'task_name', show: true},
+            {label: 'Targets', column: null, show: true},
+            {label: 'Start', column: 'start_time', show: true},
+            {label: '#Img', column: null, show: true},
+            {label: 'Telescope', column: null, show: true},
+            {label: 'Download', column: null, show: true}
+        ];
     }
 
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
@@ -69,9 +86,17 @@ export class ListObservationsComponent implements OnInit, OnChanges {
         params['include_details'] = true;
         params['offset'] = this.currentPage * this.itemsPerPage;
         params['limit'] = this.itemsPerPage;
+        params['orderBy'] = this.orderBy;
+        params['orderAsc'] = this.orderAsc;
 
         // load new list of observations
         this.IImageDb.find_observations(this.module, params).subscribe(data => this.observations = data);
+    }
+
+    orderChanged(event) {
+        this.orderBy = event.by;
+        this.orderAsc = event.asc;
+        this.updateList();
     }
 
 }
