@@ -45,10 +45,15 @@
         <td>{{obs.image_count}}</td>
         <td>{{obs.telescopes.join(', ')}}</td>
         <td>
-            <a [href]="env.basePath + '/download/observation:' + obs.name + '.tar'">
-                <fa-icon [icon]="faDownload"></fa-icon>
-                download
+            <a [href]="env.basePath + '/download/observation-raw:' + obs.name + '.tar'">
+                <fa-icon [icon]="faDownload"></fa-icon> raw
             </a>
+            <span *ngIf="obs.reduced==1">
+                /
+                <a [href]="env.basePath + '/download/observation-reduced:' + obs.name + '.tar'">
+                    <fa-icon [icon]="faDownload"></fa-icon> reduced
+                </a>
+            </span>
         </td>
     </tr>
     </tbody>
