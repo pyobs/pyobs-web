@@ -15,8 +15,8 @@ standalone:
   artifacts:
     paths:
       - public/standalone/
-#  only:
-#    - master
+  only:
+    - master
 
 #joomla:
 #  stage: build
