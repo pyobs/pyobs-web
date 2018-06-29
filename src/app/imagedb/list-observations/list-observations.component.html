@@ -44,7 +44,12 @@
         <td>{{obs.start_time}}</td>
         <td>{{obs.image_count}}</td>
         <td>{{obs.telescopes.join(', ')}}</td>
-        <td></td>
+        <td>
+            <a [href]="env.basePath + '/download/observation:' + obs.name + '.tar'">
+                <fa-icon [icon]="faDownload"></fa-icon>
+                download
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
