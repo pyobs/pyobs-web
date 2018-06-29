@@ -1,0 +1,29 @@
+image: node:8
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+  - npm install -g @angular-cli
+
+standalone:
+  stage: build
+  script:
+    - ng build --prod --output-path=public/standalone --base-href=/pytel/
+  artifacts:
+    paths:
+      - public/standalone/
+#  only:
+#    - master
+
+#joomla:
+#  stage: build
+#  script:
+#    - ng build -c joomla --output-path=public/joomla --base-href=/pytel/ $@
+#  artifacts:
+#    paths:
+#      - public/joomla/
+#  only:
+#    - master
