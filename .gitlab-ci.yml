@@ -6,15 +6,15 @@ cache:
 
 before_script:
   - npm install
-  - npm install -g @angular-cli
+  - npm install -g @angular/cli
 
-standalone:
+public:
   stage: build
   script:
-    - ng build --prod --output-path=public/standalone --base-href=/pytel/
+    - ng build --prod --output-path=public --base-href=/pytel/
   artifacts:
     paths:
-      - public/standalone/
+      - public/
   only:
     - master
 
