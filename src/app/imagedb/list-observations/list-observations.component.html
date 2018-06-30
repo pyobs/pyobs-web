@@ -45,12 +45,12 @@
         <td>{{obs.image_count}}</td>
         <td>{{obs.telescopes.join(', ')}}</td>
         <td>
-            <a [href]="env.basePath + '/download/observation-raw:' + obs.name + '.tar'">
+            <a [href]="env.basePath + '/download/observation:pytel_' + obs.name + '.tar'">
                 <fa-icon [icon]="faDownload"></fa-icon> raw
             </a>
             <span *ngIf="obs.reduced==1">
                 /
-                <a [href]="env.basePath + '/download/observation-reduced:' + obs.name + '.tar'">
+                <a [href]="env.basePath + '/download/observation:pytel_' + obs.name + '_reduced.tar'">
                     <fa-icon [icon]="faDownload"></fa-icon> reduced
                 </a>
             </span>
