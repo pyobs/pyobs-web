@@ -1,6 +1,45 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {DEFAULT_CONFIG} from 'tslint/lib/configuration';
+
+
+function isObject(item) {
+    return (item && typeof item === 'object' && !Array.isArray(item));
+}
+
+
+// deep merge objects
+function mergeDeep(target, source) {
+    const output = Object.assign({}, target);
+    if (isObject(target) && isObject(source)) {
+        Object.keys(source).forEach(key => {
+            if (isObject(source[key])) {
+                if (!(key in target)) {
+                    Object.assign(output, { [key]: source[key] });
+                } else {
+                    output[key] = mergeDeep(target[key], source[key]);
+                }
+            } else {
+                Object.assign(output, { [key]: source[key] });
+            }
+        });
+    }
+    return output;
+}
+
+// config interface
+export interface AppConfig {
+    navbar: boolean;
+    fluid: boolean;
+}
+
+// default config
+export const PYTEL_WEB_CONFIG: AppConfig = {
+    navbar: true,
+    fluid: false
+};
+
 
 @Injectable({
     providedIn: 'root'
@@ -16,21 +55,8 @@ export class AppConfigService {
         return this.http.get(environment.basePath + '/assets/config.json')
             .toPromise()
             .then(data => {
-                this.config = data;
-
-                //
-                // set missing parameters, i.e. set default config
-                //
-
-                // show the navbar
-                if (!this.config.hasOwnProperty('navbar')) {
-                    this.config.navbar = true;
-                }
-
-                // do not use a fluid layout
-                if (!this.config.hasOwnProperty('fluid')) {
-                    this.config.fluid = false;
-                }
+                // merge with default config
+                this.config = mergeDeep(PYTEL_WEB_CONFIG, data);
             });
     }
 
