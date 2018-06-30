@@ -33,7 +33,7 @@
 
     <div class="card bg-light mb-3">
         <div class="card-header">
-            <a [href]="env.basePath + '/download/observation:pytel_' + obs[0].name + '.tar'" class="float-right">
+            <a [href]="env.basePath + '/download/' + cfg.download.observation.scheme + ':'+ cfg.download.observation.prefix + obs[0].name + cfg.download.observation.raw_suffix + '.tar'" class="float-right">
                 <fa-icon [icon]="faDownload"></fa-icon>
                 Download all
             </a>
@@ -48,7 +48,7 @@
 
     <div class="card bg-light mb-3">
         <div class="card-header">
-            <a [href]="env.basePath + '/download/observation:pytel_' + obs[0].name + '_reduced.tar'" class="float-right">
+            <a [href]="env.basePath + '/download/' + cfg.download.observation.scheme + ':'+ cfg.download.observation.prefix + obs[0].name + cfg.download.observation.reduced_suffix + '.tar'" class="float-right">
                 <fa-icon [icon]="faDownload"></fa-icon>
                 Download all
             </a>

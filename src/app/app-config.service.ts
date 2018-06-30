@@ -32,12 +32,28 @@ function mergeDeep(target, source) {
 export interface AppConfig {
     navbar: boolean;
     fluid: boolean;
+    download: {
+        observation: {
+            scheme: string;
+            prefix: string;
+            raw_suffix: string;
+            reduced_suffix: string;
+        }
+    };
 }
 
 // default config
-export const PYTEL_WEB_CONFIG: AppConfig = {
+export const PYTEL_WEB_DEFAULT_CONFIG: AppConfig = {
     navbar: true,
-    fluid: false
+    fluid: false,
+    download: {
+        observation: {
+            scheme: 'observation',
+            prefix: 'pytel_',
+            raw_suffix: '',
+            reduced_suffix: '_reduced',
+        }
+    }
 };
 
 
@@ -56,7 +72,7 @@ export class AppConfigService {
             .toPromise()
             .then(data => {
                 // merge with default config
-                this.config = mergeDeep(PYTEL_WEB_CONFIG, data);
+                this.config = mergeDeep(PYTEL_WEB_DEFAULT_CONFIG, data);
             });
     }
 

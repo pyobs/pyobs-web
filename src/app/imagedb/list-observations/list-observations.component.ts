@@ -6,6 +6,7 @@ import {faImages, faDownload} from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 import {TableColumn} from '../../helper/sortable-table-header/sortable-table-header.component';
 import {environment} from '../../../environments/environment';
+import {AppConfigService} from '../../app-config.service';
 
 @Component({
     selector: 'pytel-list-observations',
@@ -38,8 +39,9 @@ export class ListObservationsComponent implements OnInit, OnChanges {
     observations = [];
     currentPage = 0;
     env = environment;
+    cfg = this.appConfig.getConfig();
 
-    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
+    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService, private appConfig: AppConfigService) {
     }
 
     ngOnInit() {

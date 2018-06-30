@@ -28,6 +28,7 @@ export class ObservationDetailsComponent implements OnInit {
     collapseRaw = true;
     collapseReduced = true;
     env = environment;
+    cfg = this.appConfig.getConfig();
 
     constructor(private route: ActivatedRoute, private IImageDb: IImageDbService, private appConfig: AppConfigService) {
     }

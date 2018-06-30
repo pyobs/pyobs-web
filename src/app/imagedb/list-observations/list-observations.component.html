@@ -20,10 +20,6 @@
 </div>
 
 <table class="table thead-dark table-striped table-bordered table-hover table-sm">
-
-</table>
-
-<table class="table thead-dark table-striped table-bordered table-hover table-sm">
     <thead pytel-sortable-table-header [columns]="table_columns" [orderBy]="orderBy" [orderAsc]="orderAsc"
            (orderChange)="orderChanged($event)"></thead>
     <ng-template #loading>
@@ -37,7 +33,8 @@
     <tr *ngFor="let obs of observations; index as i;">
         <td>{{i + 1 + (currentPage * itemsPerPage)}}</td>
         <td><a [routerLink]="['/', imagedb_path, 'observation', obs.name]">
-            <fa-icon [icon]="faImages"></fa-icon> {{obs.name}}
+            <fa-icon [icon]="faImages"></fa-icon>
+            {{obs.name}}
         </a></td>
         <td>{{obs.task_name}}</td>
         <td>{{obs.target_names.join(', ')}}</td>
@@ -45,12 +42,12 @@
         <td>{{obs.image_count}}</td>
         <td>{{obs.telescopes.join(', ')}}</td>
         <td>
-            <a [href]="env.basePath + '/download/observation:pytel_' + obs.name + '.tar'">
+            <a [href]="env.basePath + '/download/' + cfg.download.observation.scheme + ':'+ cfg.download.observation.prefix + obs.name + cfg.download.observation.raw_suffix + '.tar'">
                 <fa-icon [icon]="faDownload"></fa-icon> raw
             </a>
             <span *ngIf="obs.reduced==1">
                 /
-                <a [href]="env.basePath + '/download/observation:pytel_' + obs.name + '_reduced.tar'">
+                <a [href]="env.basePath + '/download/' + cfg.download.observation.scheme + ':'+ cfg.download.observation.prefix + obs.name + cfg.download.observation.reduced_suffix + '.tar'">
                     <fa-icon [icon]="faDownload"></fa-icon> reduced
                 </a>
             </span>
