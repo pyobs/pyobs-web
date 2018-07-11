@@ -2,9 +2,11 @@ import {Component, Input, OnChanges, OnInit, SimpleChange} from '@angular/core';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {forkJoin, Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {faImages} from '@fortawesome/free-solid-svg-icons';
+import {faImages, faDownload} from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 import {TableColumn} from '../../helper/sortable-table-header/sortable-table-header.component';
+import {environment} from '../../../environments/environment';
+import {AppConfigService} from '../../app-config.service';
 
 @Component({
     selector: 'pytel-list-observations',
@@ -22,6 +24,7 @@ export class ListObservationsComponent implements OnInit, OnChanges {
 
     // font awesome icons
     faImages = faImages;
+    faDownload = faDownload;
 
     // table columns
     table_columns: TableColumn[];
@@ -30,12 +33,15 @@ export class ListObservationsComponent implements OnInit, OnChanges {
     orderBy = 'name';
     orderAsc = true;
 
+    // variables
     count$: Observable<number>;
     observations$: Observable<any>;
     observations = [];
     currentPage = 0;
+    env = environment;
+    cfg = this.appConfig.getConfig();
 
-    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService) {
+    constructor(private route: ActivatedRoute, private IImageDb: IImageDbService, private appConfig: AppConfigService) {
     }
 
     ngOnInit() {

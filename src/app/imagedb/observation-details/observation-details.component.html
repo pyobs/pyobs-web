@@ -1,19 +1,67 @@
-<h2>Finished observation <fa-icon [icon]="faImages"></fa-icon>{{observation}}</h2>
-
 <div *ngIf="observation$ | async; let obs;">
-    <p>Telescopes: {{obs[0].telescopes.join(', ')}}</p>
+    <h2>Finished observation
+        <fa-icon [icon]="faImages"></fa-icon>
+        {{observation}}
+    </h2>
+
+    <div class="card-deck mb-3">
+        <div class="card bg-light">
+            <div class="card-header"><fa-icon [icon]="faGlobe"></fa-icon> Telescopes</div>
+            <div class="card-body">
+                <span *ngFor="let tel of obs[0].telescopes; last as l;">
+                    {{tel}} <br *ngIf="!l">
+                </span>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-header"><fa-icon [icon]="faCalendar"></fa-icon> Started</div>
+            <div class="card-body">{{obs[0].start_time}}</div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-header"><fa-icon [icon]="faStar"></fa-icon> Targets</div>
+            <div class="card-body">
+                <span *ngFor="let target of obs[0].target_names; last as l;">
+                    {{target}} <br *ngIf="!l">
+                </span>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-header"><fa-icon [icon]="faTasks"></fa-icon> Task</div>
+            <div class="card-body">{{obs[0].task_name}}</div>
+        </div>
+    </div>
+
+    <div class="card bg-light mb-3">
+        <div class="card-header">
+            <a [href]="env.basePath + '/download/' + cfg.download.observation.scheme + ':'+ cfg.download.observation.prefix + obs[0].name + cfg.download.observation.raw_suffix + '.tar'" class="float-right">
+                <fa-icon [icon]="faDownload"></fa-icon>
+                Download all
+            </a>
+            <h4>Raw files</h4>
+        </div>
+        <div class="card-body">
+            <pytel-list-images [module]="module" [imagedb_path]="imagedb_path"
+                               [query]="{observation: observation, reduction_status: 0}" [itemsPerPage]="10">
+            </pytel-list-images>
+        </div>
+    </div>
+
+    <div class="card bg-light mb-3">
+        <div class="card-header">
+            <a [href]="env.basePath + '/download/' + cfg.download.observation.scheme + ':'+ cfg.download.observation.prefix + obs[0].name + cfg.download.observation.reduced_suffix + '.tar'" class="float-right">
+                <fa-icon [icon]="faDownload"></fa-icon>
+                Download all
+            </a>
+            <h4>Reduced files</h4>
+        </div>
+        <div class="card-body">
+            <pytel-list-images [module]="module" [imagedb_path]="imagedb_path"
+                               [query]="{observation: observation, reduction_status: 1}" [itemsPerPage]="10">
+            </pytel-list-images>
+        </div>
+    </div>
 </div>
 
 <ng-template #loading>
     (loading)
 </ng-template>
-
-<h4>Raw files</h4>
-<pytel-list-images [module]="module" [imagedb_path]="imagedb_path"
-                   [query]="{observation: observation, reduction_status: 0}" [itemsPerPage]="10">
-</pytel-list-images>
-
-<h4>Reduced files</h4>
-<pytel-list-images [module]="module" [imagedb_path]="imagedb_path"
-                   [query]="{observation: observation, reduction_status: 1}" [itemsPerPage]="10">
-</pytel-list-images>

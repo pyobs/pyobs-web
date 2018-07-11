@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {IImageDbService} from '../../shared/json-rpc.service';
 import {faImage, faDownload} from '@fortawesome/free-solid-svg-icons';
 import {IconDefinition} from '@fortawesome/fontawesome-common-types';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'pytel-list-images',
@@ -21,10 +22,11 @@ export class ListImagesComponent implements OnInit, OnChanges {
     faDownload = faDownload;
 
     // variables
-    public count$: Observable<number>;
-    public images$: Observable<any>;
-    public images = [];
-    public currentPage = 0;
+    count$: Observable<number>;
+    images$: Observable<any>;
+    images = [];
+    currentPage = 0;
+    env = environment;
 
     constructor(private IImageDb: IImageDbService) {
     }

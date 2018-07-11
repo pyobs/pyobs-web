@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FindImagesParams, IImageDbService} from '../../shared/json-rpc.service';
+import {IImageDbService} from '../../shared/json-rpc.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {faImages} from '@fortawesome/free-solid-svg-icons';
-import {IconDefinition} from '@fortawesome/fontawesome-common-types';
-import {share} from 'rxjs/operators';
+import {faImages, faDownload, faTasks, faGlobe, faCalendar, faStar} from '@fortawesome/free-solid-svg-icons';
 import {AppConfigService} from '../../app-config.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'pytel-observation-details',
@@ -15,6 +14,11 @@ import {AppConfigService} from '../../app-config.service';
 export class ObservationDetailsComponent implements OnInit {
     // font awesome icons
     faImages = faImages;
+    faDownload = faDownload;
+    faGlobe = faGlobe;
+    faCalendar = faCalendar;
+    faTasks = faTasks;
+    faStar = faStar;
 
     // variables
     module: string;
@@ -23,6 +27,8 @@ export class ObservationDetailsComponent implements OnInit {
     observation$: Observable<any>;
     collapseRaw = true;
     collapseReduced = true;
+    env = environment;
+    cfg = this.appConfig.getConfig();
 
     constructor(private route: ActivatedRoute, private IImageDb: IImageDbService, private appConfig: AppConfigService) {
     }

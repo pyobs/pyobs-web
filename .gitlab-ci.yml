@@ -1,29 +1,19 @@
-image: node:8
-
-cache:
-  paths:
-    - node_modules/
-
-before_script:
-  - npm install
-  - npm install -g @angular/cli
-
-public:
-  stage: build
-  script:
-    - ng build --prod --output-path=public --base-href=/pytel/
-  artifacts:
-    paths:
-      - public/
-  only:
-    - master
-
-#joomla:
+#image: node:8
+#
+#cache:
+#  paths:
+#    - node_modules/
+#
+#before_script:
+#  - npm install
+#  - npm install -g @angular/cli
+#
+#public:
 #  stage: build
 #  script:
-#    - ng build -c joomla --output-path=public/joomla --base-href=/pytel/ $@
+#    - ng build --prod --output-path=public --base-href=/pytel/
 #  artifacts:
 #    paths:
-#      - public/joomla/
+#      - public/
 #  only:
-#    - master
+#    - tags
