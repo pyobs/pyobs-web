@@ -111,12 +111,9 @@ export class JsonRpcService {
                 }
 
                 // do we have a result?
-                if (response.result == null) {
-                    throw Observable.throw('No result found in response from server.');
+                if (response.result != null) {
+                    return response.result;
                 }
-
-                // return result
-                return response.result;
             }));
     }
 }
