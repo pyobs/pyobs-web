@@ -4,7 +4,7 @@ import {environment} from '../../environments/environment';
 import {AppConfigService} from '../app-config.service';
 
 @Component({
-    selector: 'pytel-camera',
+    selector: 'pyobs-camera',
     templateUrl: './camera.component.html',
     styleUrls: ['./camera.component.css']
 })

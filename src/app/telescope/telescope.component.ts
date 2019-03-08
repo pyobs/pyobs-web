@@ -8,7 +8,7 @@ import {CoordinatesPipe} from '../shared/coordinates.pipe';
 import {AppConfigService} from '../app-config.service';
 
 @Component({
-    selector: 'pytel-telescope',
+    selector: 'pyobs-telescope',
     templateUrl: './telescope.component.html',
     styleUrls: ['./telescope.component.css']
 })

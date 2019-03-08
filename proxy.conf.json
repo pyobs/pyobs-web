@@ -1,17 +1,17 @@
 {
-  "/pytel/jsonrpc": {
+  "/pyobs/jsonrpc": {
     "target": "http://localhost:37077",
     "secure": false
   },
-  "/pytel/preview": {
+  "/pyobs/preview": {
     "target": "http://localhost:37077",
     "secure": false
   },
-  "/pytel/headers": {
+  "/pyobs/headers": {
     "target": "http://localhost:37077",
     "secure": false
   },
-  "/pytel/download": {
+  "/pyobs/download": {
     "target": "http://localhost:37077",
     "secure": false
   }

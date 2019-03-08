@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "pytel",
+            "pyobs",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "pytel",
+            "pyobs",
             "kebab-case"
         ]
     }

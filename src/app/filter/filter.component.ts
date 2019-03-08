@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AppConfigService} from '../app-config.service';
 
 @Component({
-    selector: 'pytel-filter',
+    selector: 'pyobs-filter',
     templateUrl: './filter.component.html',
     styleUrls: ['./filter.component.css']
 })

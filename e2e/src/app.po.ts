@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getParagraphText() {
-    return element(by.css('pytel-root h1')).getText();
+    return element(by.css('pyobs-root h1')).getText();
   }
 }

@@ -9,7 +9,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 import {AppConfigService} from '../../app-config.service';
 
 @Component({
-    selector: 'pytel-search-observations',
+    selector: 'pyobs-search-observations',
     templateUrl: './search-observations.component.html',
     styleUrls: ['./search-observations.component.css']
 })

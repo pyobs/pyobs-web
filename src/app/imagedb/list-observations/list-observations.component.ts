@@ -9,7 +9,7 @@ import {environment} from '../../../environments/environment';
 import {AppConfigService} from '../../app-config.service';
 
 @Component({
-    selector: 'pytel-list-observations',
+    selector: 'pyobs-list-observations',
     templateUrl: './list-observations.component.html',
     styleUrls: ['./list-observations.component.css']
 })

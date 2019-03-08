@@ -3,17 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pytel-web": {
+    "pyobs-web": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "pytel",
+      "prefix": "pyobs",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pytel-web",
+            "outputPath": "dist/pyobs-web",
             "deleteOutputPath": true,
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -70,19 +70,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pytel-web:build",
+            "browserTarget": "pyobs-web:build",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pytel-web:build:production"
+              "browserTarget": "pyobs-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pytel-web:build"
+            "browserTarget": "pyobs-web:build"
           }
         },
         "test": {
@@ -116,7 +116,7 @@
         }
       }
     },
-    "pytel-web-e2e": {
+    "pyobs-web-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -124,7 +124,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pytel-web:serve"
+            "devServerTarget": "pyobs-web:serve"
           }
         },
         "lint": {
@@ -139,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "pytel-web"
+  "defaultProject": "pyobs-web"
 }

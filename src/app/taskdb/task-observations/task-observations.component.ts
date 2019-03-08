@@ -5,7 +5,7 @@ import {AppConfigService} from '../../app-config.service';
 import {Observable} from 'rxjs/index';
 
 @Component({
-    selector: 'pytel-task-observations',
+    selector: 'pyobs-task-observations',
     templateUrl: './task-observations.component.html',
     styleUrls: ['./task-observations.component.css']
 })

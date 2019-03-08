@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AppConfigService} from '../app-config.service';
 
 @Component({
-    selector: 'pytel-focus',
+    selector: 'pyobs-focus',
     templateUrl: './focus.component.html',
     styleUrls: ['./focus.component.css']
 })

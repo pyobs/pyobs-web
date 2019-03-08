@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {JsonRpcService, PytelModule} from '../shared/json-rpc.service';
+import {JsonRpcService, PyObsModule} from '../shared/json-rpc.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {environment} from '../../environments/environment';
@@ -12,7 +12,7 @@ export interface Link {
 }
 
 @Component({
-    selector: 'pytel-navigation',
+    selector: 'pyobs-navigation',
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.css']
 })

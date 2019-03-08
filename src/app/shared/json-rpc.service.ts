@@ -20,7 +20,7 @@ class JsonRpcResponse {
     }
 }
 
-export class PytelModule {
+export class PyObsModule {
     public module: string;
     public name: string;
     public interfaces: string[];
@@ -36,10 +36,10 @@ export class PytelModule {
 export class JsonRpcService {
     private next_caller_id = 1;
     private readonly url = null;
-    private modules: PytelModule[] = [];
+    private modules: PyObsModule[] = [];
     private status = new Map<string, Map<string, BehaviorSubject<Status>>>();
 
-    public modules$ = new BehaviorSubject<PytelModule[]>([]);
+    public modules$ = new BehaviorSubject<PyObsModule[]>([]);
 
     constructor(private http: HttpClient, private location: Location) {
         // set url
@@ -48,7 +48,7 @@ export class JsonRpcService {
         // create observable that watches the modules of the server
         timer(0, 10000)
             .pipe(flatMap(() => this.execute(null, '_get_modules', null)))
-            .pipe(map(rawModules => rawModules.map(m => new PytelModule(m))))
+            .pipe(map(rawModules => rawModules.map(m => new PyObsModule(m))))
             .subscribe(modules => this.setModules(modules));
 
         // create timer for status updates
@@ -56,7 +56,7 @@ export class JsonRpcService {
             .subscribe(() => this.getModulesStatus());
     }
 
-    private setModules(modules: PytelModule[]) {
+    private setModules(modules: PyObsModule[]) {
         this.modules = modules;
         this.modules$.next(modules);
     }
@@ -107,7 +107,7 @@ export class JsonRpcService {
             .pipe(map(response => {
                 // did we get an error?
                 if (response.error != null) {
-                    throw Observable.throw('An error occurred: ' + response.error.message);
+                    console.log('An error occurred: ' + response.error.message);
                 }
 
                 // do we have a result?

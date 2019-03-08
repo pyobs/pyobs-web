@@ -6,7 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AppConfigService} from '../app-config.service';
 
 @Component({
-    selector: 'pytel-cooling',
+    selector: 'pyobs-cooling',
     templateUrl: './cooling.component.html',
     styleUrls: ['./cooling.component.css']
 })

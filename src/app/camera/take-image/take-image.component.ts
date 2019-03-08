@@ -6,7 +6,7 @@ import {Status} from '../../shared/status-factory';
 
 
 @Component({
-    selector: 'pytel-take-image',
+    selector: 'pyobs-take-image',
     templateUrl: './take-image.component.html',
     styleUrls: ['./take-image.component.css']
 })

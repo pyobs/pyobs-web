@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 
 @Component({
-    selector: 'pytel-image-preview',
+    selector: 'pyobs-image-preview',
     templateUrl: './image-preview.component.html',
     styleUrls: ['./image-preview.component.css']
 })

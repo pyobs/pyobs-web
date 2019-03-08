@@ -7,7 +7,7 @@ import {AppConfigService} from '../../app-config.service';
 import {environment} from '../../../environments/environment';
 
 @Component({
-    selector: 'pytel-observation-details',
+    selector: 'pyobs-observation-details',
     templateUrl: './observation-details.component.html',
     styleUrls: ['./observation-details.component.css']
 })

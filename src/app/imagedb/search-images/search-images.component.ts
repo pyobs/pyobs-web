@@ -12,7 +12,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 import {AppConfigService} from '../../app-config.service';
 
 @Component({
-    selector: 'pytel-search-images',
+    selector: 'pyobs-search-images',
     templateUrl: './search-images.component.html',
     styleUrls: ['./search-images.component.css']
 })

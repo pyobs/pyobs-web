@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {AppConfigService} from './app-config.service';
 
 @Component({
-    selector: 'pytel-root',
+    selector: 'pyobs-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })

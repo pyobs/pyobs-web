@@ -1,10 +1,10 @@
 #!/bin/bash
-ng build -c joomla --output-path=joomla --base-href=/pytel/ $@
+ng build -c joomla --output-path=joomla --base-href=/pyobs/ $@
 
 # clean up
-rm ../pytel-joomla/com_pytel/site/js/*
-rm ../pytel-joomla/com_pytel/site/css/*
+rm ../pyobs-joomla/com_pyobs/site/js/*
+rm ../pyobs-joomla/com_pyobs/site/css/*
 
 # copy
-cp joomla/*.js ../pytel-joomla/com_pytel/site/js/
-cp joomla/*.css ../pytel-joomla/com_pytel/site/css/
+cp joomla/*.js ../pyobs-joomla/com_pyobs/site/js/
+cp joomla/*.css ../pyobs-joomla/com_pyobs/site/css/

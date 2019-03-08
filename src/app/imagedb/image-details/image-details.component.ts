@@ -9,7 +9,7 @@ import {AppConfigService} from '../../app-config.service';
 import {environment} from '../../../environments/environment';
 
 @Component({
-    selector: 'pytel-image-details',
+    selector: 'pyobs-image-details',
     templateUrl: './image-details.component.html',
     styleUrls: ['./image-details.component.css']
 })

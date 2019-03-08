@@ -12,7 +12,7 @@ export interface OrderChange {
 }
 
 @Component({
-    selector: '[pytel-sortable-table-header]',
+    selector: '[pyobs-sortable-table-header]',
     templateUrl: './sortable-table-header.component.html',
     styleUrls: ['./sortable-table-header.component.css']
 })

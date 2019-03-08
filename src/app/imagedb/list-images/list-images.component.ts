@@ -6,7 +6,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types';
 import {environment} from '../../../environments/environment';
 
 @Component({
-    selector: 'pytel-list-images',
+    selector: 'pyobs-list-images',
     templateUrl: './list-images.component.html',
     styleUrls: ['./list-images.component.css']
 })

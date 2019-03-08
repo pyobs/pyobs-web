@@ -43,13 +43,13 @@ export interface AppConfig {
 }
 
 // default config
-export const PYTEL_WEB_DEFAULT_CONFIG: AppConfig = {
+export const PYOBS_WEB_DEFAULT_CONFIG: AppConfig = {
     navbar: true,
     fluid: false,
     download: {
         observation: {
             scheme: 'observation',
-            prefix: 'pytel_',
+            prefix: 'pyobs_',
             raw_suffix: '',
             reduced_suffix: '_reduced',
         }
@@ -72,7 +72,7 @@ export class AppConfigService {
             .toPromise()
             .then(data => {
                 // merge with default config
-                this.config = mergeDeep(PYTEL_WEB_DEFAULT_CONFIG, data);
+                this.config = mergeDeep(PYOBS_WEB_DEFAULT_CONFIG, data);
             });
     }
 
